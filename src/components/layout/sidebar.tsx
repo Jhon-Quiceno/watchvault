@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { PanelLeftClose, PanelLeftOpen, Play, X } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { navSections, type NavItem } from "@/config/navigation";
@@ -19,9 +20,14 @@ function isActive(pathname: string, href: string): boolean {
 function Brand({ collapsed }: { collapsed: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-2.5 px-1.5 py-1" aria-label="Inicio de Watchvault">
-      <span className="bg-gradient-brand grid size-9 shrink-0 place-items-center rounded-xl text-white shadow-lg shadow-brand/25">
-        <Play className="size-4.5 fill-current" />
-      </span>
+      <Image
+        src="/logo.svg"
+        alt=""
+        width={36}
+        height={36}
+        priority
+        className="shadow-brand/25 size-9 shrink-0 rounded-xl shadow-lg"
+      />
       {!collapsed && (
         <span className="text-lg font-semibold tracking-tight">
           Watch<span className="text-gradient-brand">vault</span>

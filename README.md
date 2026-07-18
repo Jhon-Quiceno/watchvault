@@ -1,6 +1,10 @@
-# 🎬 Watchvault
+<p align="center">
+  <img src="./public/logo.svg" alt="Watchvault logo" width="88" height="88" />
+</p>
 
-**Your entire watch history — movies, series, and anime — in one fast, personal vault.**
+<h1 align="center">Watchvault</h1>
+
+<p align="center"><strong>Your entire watch history — movies, series, and anime — in one fast, personal vault.</strong></p>
 
 Watchvault is a self-hosted tracker for everything you watch. Search TMDB and AniList, preview full details before committing to anything, log it with the right status in one move, and let your dashboard, stats, and recommendations take it from there. No accounts, no social feed, no noise — just your library, built for speed.
 
