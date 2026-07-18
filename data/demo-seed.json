@@ -1,0 +1,1792 @@
+{
+  "entries": [
+    {
+      "id": "c160bfca-0b13-42d7-99f6-28b42aeb4cc4",
+      "media": {
+        "id": "tmdb:movie:27205",
+        "provider": "tmdb",
+        "providerId": "27205",
+        "type": "movie",
+        "title": "Inception",
+        "originalTitle": "Inception",
+        "year": 2010,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+        "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+        "rating": 8.4,
+        "genres": [
+          "Action",
+          "Science Fiction",
+          "Adventure"
+        ],
+        "runtimeMinutes": 148,
+        "releaseDate": "2010-07-15",
+        "status": "Released",
+        "productionCompanies": [
+          "Legendary Pictures",
+          "Syncopy",
+          "Warner Bros. Pictures"
+        ],
+        "director": "Christopher Nolan",
+        "cast": [
+          {
+            "name": "Leonardo DiCaprio",
+            "character": "Dom Cobb",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/mkdRcVIQl4WZhDf1vXKWTD7HZrZ.jpg"
+          },
+          {
+            "name": "Joseph Gordon-Levitt",
+            "character": "Arthur",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/z2FA8js799xqtfiFjBTicFYdfk.jpg"
+          },
+          {
+            "name": "Ken Watanabe",
+            "character": "Saito",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/psAXOYp9SBOXvg6AXzARDedNQ9P.jpg"
+          },
+          {
+            "name": "Tom Hardy",
+            "character": "Eames",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/d81K0RH8UX7tZj49tZaQhZ9ewH.jpg"
+          },
+          {
+            "name": "Elliot Page",
+            "character": "Ariadne",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/nXO8DE4biVXY4UDYP0NdIY1zvXS.jpg"
+          },
+          {
+            "name": "Dileep Rao",
+            "character": "Yusuf",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/jRNn8SZqFXuI5wOOlHwYsWh0hXs.jpg"
+          },
+          {
+            "name": "Cillian Murphy",
+            "character": "Robert Fischer, Jr.",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg"
+          },
+          {
+            "name": "Tom Berenger",
+            "character": "Peter Browning",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/zLxzAdAfu7y02yEx29JSLDgXJZ4.jpg"
+          },
+          {
+            "name": "Marion Cotillard",
+            "character": "Mal Cobb",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/biitzOF0GffIqFYLyOPkoiaOngQ.jpg"
+          },
+          {
+            "name": "Pete Postlethwaite",
+            "character": "Maurice Fischer",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/2gpa75Ci4y2OKmOc8WXnaeGgyKF.jpg"
+          },
+          {
+            "name": "Michael Caine",
+            "character": "Stephen Miles",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+          },
+          {
+            "name": "Lukas Haas",
+            "character": "Nash",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/6LNGu3o2aBiYNTDkbXMDIGyQtBh.jpg"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": null,
+        "trailerUrl": "https://www.youtube.com/watch?v=JE9z-gy4De4",
+        "watchProviders": [
+          {
+            "name": "MGM Plus",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/ctiRpS16dlaTXQBSsiFncMrgWmh.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Spectrum On Demand",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/aAb9CUHjFe9Y3O57qnrJH0KOF1B.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Plex",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "buy"
+          }
+        ],
+        "similar": [
+          {
+            "id": "tmdb:movie:438859",
+            "title": "Call of the Wolf",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/3xIw06nJsQiCKmfgzSh73nQtMqe.jpg"
+          },
+          {
+            "id": "tmdb:movie:1535",
+            "title": "Spy Game",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/6y8M1rxjKofQCRKKe6xeV91K2Fc.jpg"
+          },
+          {
+            "id": "tmdb:movie:618176",
+            "title": "Anna Bond",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/bFm9FdMu88Lj3iTIcJ9I3ra1NSf.jpg"
+          },
+          {
+            "id": "tmdb:movie:1562",
+            "title": "28 Weeks Later",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/oix0aNv1lvW3nUGspUyvSIBlpbs.jpg"
+          },
+          {
+            "id": "tmdb:movie:1579",
+            "title": "Apocalypto",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/cRY25Q32kDNPFDkFkxAs6bgCq3L.jpg"
+          },
+          {
+            "id": "tmdb:movie:1654",
+            "title": "The Dirty Dozen",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/tFWWsuhp22zJ6OG6QepJIiPUfeF.jpg"
+          },
+          {
+            "id": "tmdb:movie:1726",
+            "title": "Iron Man",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg"
+          },
+          {
+            "id": "tmdb:movie:1103",
+            "title": "Escape from New York",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/vH9llaphjAssRGi0k7e75tD40Ce.jpg"
+          },
+          {
+            "id": "tmdb:movie:1265",
+            "title": "Bridge to Terabithia",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/3xFxGodKPMFLheS8rujFSmLfcq4.jpg"
+          },
+          {
+            "id": "tmdb:movie:38",
+            "title": "Eternal Sunshine of the Spotless Mind",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg"
+          },
+          {
+            "id": "tmdb:movie:213",
+            "title": "North by Northwest",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/kNOFPQrel9YFCVzI0DF8FnCEpCw.jpg"
+          },
+          {
+            "id": "tmdb:movie:253",
+            "title": "Live and Let Die",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/39qkrjqMZs6utwNmihVImC3ghas.jpg"
+          }
+        ]
+      },
+      "status": "completed",
+      "personalRating": 9,
+      "favorite": true,
+      "notes": "Una obra maestra de Nolan. La revisé varias veces para entender bien el final.",
+      "tags": [
+        "mind-bending",
+        "clásico"
+      ],
+      "startedAt": "2026-06-08T16:30:15.889Z",
+      "finishedAt": "2026-06-08T16:30:15.889Z",
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 0,
+        "watchedSeasons": 0
+      },
+      "addedAt": "2026-06-08T16:30:15.889Z",
+      "updatedAt": "2026-06-08T16:30:15.889Z"
+    },
+    {
+      "id": "976c4837-2b5b-4cfc-b1d7-bc154fac937c",
+      "media": {
+        "id": "tmdb:movie:496243",
+        "provider": "tmdb",
+        "providerId": "496243",
+        "type": "movie",
+        "title": "Parasite",
+        "originalTitle": "기생충",
+        "year": 2019,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
+        "overview": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+        "rating": 8.5,
+        "genres": [
+          "Comedy",
+          "Thriller",
+          "Drama"
+        ],
+        "runtimeMinutes": 133,
+        "releaseDate": "2019-05-30",
+        "status": "Released",
+        "productionCompanies": [
+          "Barunson E&A"
+        ],
+        "director": "Bong Joon Ho",
+        "cast": [
+          {
+            "name": "Song Kang-ho",
+            "character": "Kim Ki-taek",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/kBM9UTPYXUA2RNk210DXhztLFns.jpg"
+          },
+          {
+            "name": "Lee Sun-kyun",
+            "character": "Park Dong-ik",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/nHFBbSFohzOUOvMxPVwe3Es2nJw.jpg"
+          },
+          {
+            "name": "Cho Yeo-jeong",
+            "character": "Yeon-kyo",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/5MgWM8pkUiYkj9MEaEpO0Ir1FD9.jpg"
+          },
+          {
+            "name": "Choi Woo-shik",
+            "character": "Ki-woo",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/hRDiuKWwe156zRjEu826eci7H3r.jpg"
+          },
+          {
+            "name": "Park So-dam",
+            "character": "Ki-jung",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/fGVOikpvivopeATDy6ZzLdKYXDu.jpg"
+          },
+          {
+            "name": "Lee Jung-eun",
+            "character": "Moon-gwang",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/4r3K47UpSmzZ5t9cyTRRqRl9rdz.jpg"
+          },
+          {
+            "name": "Jang Hye-jin",
+            "character": "Chung-sook",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/pZiQXSWwo9F4gncHfa1yw0CQjxk.jpg"
+          },
+          {
+            "name": "Park Myung-hoon",
+            "character": "Geun-se",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/5SucrxkigHss7UuJKrkfAZX5MXz.jpg"
+          },
+          {
+            "name": "Jung Zi-so",
+            "character": "Da-hye",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/jsUPFmY1HlML92ubVtSE8L8ovz6.jpg"
+          },
+          {
+            "name": "Jung Hyeon-jun",
+            "character": "Da-song",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/vZadA6ip6V2kh0VZW9RwnLcYFgW.jpg"
+          },
+          {
+            "name": "Park Keun-rok",
+            "character": "Driver Yoon",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/j3AEOJskfSm7nhR8RnDm6njRN3W.jpg"
+          },
+          {
+            "name": "Jung Yi-seo",
+            "character": "Pizza Manager",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/o6Nfe0BiZs6CCSm8BigPshbu0px.jpg"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": null,
+        "trailerUrl": "https://www.youtube.com/watch?v=bM9QabAojCg",
+        "watchProviders": [
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "FlixFling",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/yFGu4sSzwUMfhwmSsZgez8QhaVl.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "buy"
+          }
+        ],
+        "similar": [
+          {
+            "id": "tmdb:movie:10008",
+            "title": "An American Haunting",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/5ePaCimd7cA9zYNib8WfIbWnrCf.jpg"
+          },
+          {
+            "id": "tmdb:movie:9958",
+            "title": "Trailer Park Boys: The Movie",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/lBmoxMfxxIepgpoByFr78ygnjrZ.jpg"
+          },
+          {
+            "id": "tmdb:movie:10098",
+            "title": "The Kid",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/A9NWYyn7eX0H9XIjaOvfWJ9mCGA.jpg"
+          },
+          {
+            "id": "tmdb:movie:10118",
+            "title": "Material Girls",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/tJaTKE5kP0BQCR2hkltnr8aEpnu.jpg"
+          },
+          {
+            "id": "tmdb:movie:624687",
+            "title": "The Boy Who Stopped Breathing",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/kLkw8aXST3UUvfaYDMEGZCBYMAP.jpg"
+          },
+          {
+            "id": "tmdb:movie:624698",
+            "title": "reVirgination",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/kQ0BtFiUCZaunvMDMaErkcF5FEZ.jpg"
+          },
+          {
+            "id": "tmdb:movie:266451",
+            "title": "D'Unbelievables D'Telly",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/DISilDqD27lubnck6yhOxzK7bG.jpg"
+          },
+          {
+            "id": "tmdb:movie:10129",
+            "title": "Autumn Milk",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/ifVFzDKcK0A1RFqUSywjfcXu38k.jpg"
+          },
+          {
+            "id": "tmdb:movie:624788",
+            "title": "Black Bear",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/nqZFjQRWfW6PjFTc17pzJ5LRAAv.jpg"
+          },
+          {
+            "id": "tmdb:movie:10161",
+            "title": "My Left Foot: The Story of Christy Brown",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/GRAAl0bMQFoFIjV3aunc5jsM5u.jpg"
+          },
+          {
+            "id": "tmdb:movie:10227",
+            "title": "PlayTime",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/kQOrS0DLUXYsqPMedM2G6NJcJBq.jpg"
+          },
+          {
+            "id": "tmdb:movie:10234",
+            "title": "Funny Games",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/48uCNgdyYIoN4ayWjTpLaqSDcWI.jpg"
+          }
+        ]
+      },
+      "status": "completed",
+      "personalRating": 9.5,
+      "favorite": true,
+      "notes": "",
+      "tags": [
+        "thriller",
+        "premiada"
+      ],
+      "startedAt": "2026-06-13T16:30:16.524Z",
+      "finishedAt": "2026-06-13T16:30:16.524Z",
+      "rewatchCount": 1,
+      "progress": {
+        "watchedEpisodes": 0,
+        "watchedSeasons": 0
+      },
+      "addedAt": "2026-06-13T16:30:16.524Z",
+      "updatedAt": "2026-06-13T16:30:16.524Z"
+    },
+    {
+      "id": "d88c1bd3-6542-44df-9008-f0674d3f20f0",
+      "media": {
+        "id": "tmdb:movie:155",
+        "provider": "tmdb",
+        "providerId": "155",
+        "type": "movie",
+        "title": "The Dark Knight",
+        "originalTitle": "The Dark Knight",
+        "year": 2008,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/dqK9Hag1054tghRQSqLSfrkvQnA.jpg",
+        "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+        "rating": 8.5,
+        "genres": [
+          "Action",
+          "Crime",
+          "Thriller"
+        ],
+        "runtimeMinutes": 152,
+        "releaseDate": "2008-07-16",
+        "status": "Released",
+        "productionCompanies": [
+          "Warner Bros. Pictures",
+          "Legendary Pictures",
+          "Syncopy",
+          "DC"
+        ],
+        "director": "Christopher Nolan",
+        "cast": [
+          {
+            "name": "Christian Bale",
+            "character": "Bruce Wayne",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg"
+          },
+          {
+            "name": "Heath Ledger",
+            "character": "Joker",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/AdWKVqyWpkYSfKE5Gb2qn8JzHni.jpg"
+          },
+          {
+            "name": "Aaron Eckhart",
+            "character": "Harvey Dent",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/u5JjnRMr9zKEVvOP7k3F6gdcwT6.jpg"
+          },
+          {
+            "name": "Michael Caine",
+            "character": "Alfred",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+          },
+          {
+            "name": "Maggie Gyllenhaal",
+            "character": "Rachel",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/vsfkWdYWmA9CpzMHTJzrFxlDnEZ.jpg"
+          },
+          {
+            "name": "Gary Oldman",
+            "character": "Gordon",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/yhaSM5habNNI1Tf4ALRwRk3VvSZ.jpg"
+          },
+          {
+            "name": "Morgan Freeman",
+            "character": "Lucius Fox",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/905k0RFzH0Kd6gx8oSxRdnr6FL.jpg"
+          },
+          {
+            "name": "Monique Gabriela Curnen",
+            "character": "Ramirez",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/lJgLQs7cfM49m8VzVviwxIByz76.jpg"
+          },
+          {
+            "name": "Ron Dean",
+            "character": "Wuertz",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/mgqdr4VFrTVZatkki2suNLYxeDG.jpg"
+          },
+          {
+            "name": "Cillian Murphy",
+            "character": "Scarecrow",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg"
+          },
+          {
+            "name": "Chin Han",
+            "character": "Lau",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/3XJXmYm6r4Hvm3izOArU58fhQrT.jpg"
+          },
+          {
+            "name": "Nestor Carbonell",
+            "character": "Mayor",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/4Xn03t2qDEMR2ecM7BtLwpvs3J0.jpg"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": null,
+        "trailerUrl": "https://www.youtube.com/watch?v=_PZpmTj1Q8Q",
+        "watchProviders": [
+          {
+            "name": "HBO Max Amazon Channel",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/embS4GPK7c8pjbuY2O2irV5rYch.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "YouTube TV",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/x9zOHTUkQzt3PgPVKbMH9CKBwLK.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "HBO Max",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/jbe4gVSfRlbPTdESXhEKpornsfu.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "rent"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "YouTube",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pTnn5JwWr4p3pG8H6VrpiQo7Vs0.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "buy"
+          }
+        ],
+        "collections": [
+          {
+            "id": "263",
+            "name": "The Dark Knight Collection",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/ogyw5LTmL53dVxsppcy8Dlm30Fu.jpg"
+          }
+        ],
+        "similar": [
+          {
+            "id": "tmdb:movie:9947",
+            "title": "Elektra",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/gC6s6NKHneSrOKyQZnUMb443RKU.jpg"
+          },
+          {
+            "id": "tmdb:movie:9954",
+            "title": "The Covenant",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/r6jbhgqKao3K3in4eftu7gqgMNH.jpg"
+          },
+          {
+            "id": "tmdb:movie:10117",
+            "title": "Action Jackson",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/vWBGkHT91My4T2iV3xgynpBTKtQ.jpg"
+          },
+          {
+            "id": "tmdb:movie:1002780",
+            "title": "Kamen Rider Geats × Revice: Movie Battle Royale",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/wwKOQPKYijGqLdqY7Bp4orYmA5E.jpg"
+          },
+          {
+            "id": "tmdb:movie:10131",
+            "title": "A Nightmare on Elm Street 4: The Dream Master",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/boStYG7jKdoIZTduiOOsUVknD13.jpg"
+          },
+          {
+            "id": "tmdb:movie:10136",
+            "title": "The Golden Child",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/9gPphtcGmna90U9CEsWlUVaSkAw.jpg"
+          },
+          {
+            "id": "tmdb:movie:10138",
+            "title": "Iron Man 2",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg"
+          },
+          {
+            "id": "tmdb:movie:10155",
+            "title": "U Turn",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/nBPTj1ApIDWo04M14rXFwLPdtr2.jpg"
+          },
+          {
+            "id": "tmdb:movie:10160",
+            "title": "A Nightmare on Elm Street: The Dream Child",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/kizvpgXQfrAgN8FhOd87LbKk6kO.jpg"
+          },
+          {
+            "id": "tmdb:movie:10234",
+            "title": "Funny Games",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/48uCNgdyYIoN4ayWjTpLaqSDcWI.jpg"
+          },
+          {
+            "id": "tmdb:movie:10251",
+            "title": "5ive Girls",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/9EKL1Ta42cj9rSqopfu3QJFE3G1.jpg"
+          },
+          {
+            "id": "tmdb:movie:10283",
+            "title": "Friday the 13th Part VIII: Jason Takes Manhattan",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/6ezOsZ9UzqGnbDokaatxdOWP6e9.jpg"
+          }
+        ]
+      },
+      "status": "completed",
+      "personalRating": 10,
+      "favorite": true,
+      "notes": "El mejor Joker de la pantalla, sin discusión.",
+      "tags": [
+        "clásico",
+        "acción"
+      ],
+      "startedAt": "2026-06-18T16:30:17.139Z",
+      "finishedAt": "2026-06-18T16:30:17.139Z",
+      "rewatchCount": 2,
+      "progress": {
+        "watchedEpisodes": 0,
+        "watchedSeasons": 0
+      },
+      "addedAt": "2026-06-18T16:30:17.139Z",
+      "updatedAt": "2026-06-18T16:30:17.139Z"
+    },
+    {
+      "id": "2c58bc86-7772-43df-8fac-38a866a39433",
+      "media": {
+        "id": "tmdb:series:1396",
+        "provider": "tmdb",
+        "providerId": "1396",
+        "type": "series",
+        "title": "Breaking Bad",
+        "originalTitle": "Breaking Bad",
+        "year": 2008,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+        "overview": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+        "rating": 8.9,
+        "genres": [
+          "Drama",
+          "Crime"
+        ],
+        "runtimeMinutes": null,
+        "releaseDate": "2008-01-20",
+        "status": "Ended",
+        "productionCompanies": [
+          "Sony Pictures Television",
+          "High Bridge Productions",
+          "Gran Via Productions"
+        ],
+        "director": "Vince Gilligan",
+        "cast": [
+          {
+            "name": "Bryan Cranston",
+            "character": "Walter White",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/npIIZJGSrcJIJ6yHdmbqO6Jzo5I.jpg"
+          },
+          {
+            "name": "Aaron Paul",
+            "character": "Jesse Pinkman",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/8Ac9uuoYwZoYVAIJfRLzzLsGGJn.jpg"
+          },
+          {
+            "name": "Anna Gunn",
+            "character": "Skyler White",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/adppyeu1a4REN3khtgmXusrapFi.jpg"
+          },
+          {
+            "name": "RJ Mitte",
+            "character": "Walter White Jr.",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/sNPA92ZrssYhlaB1UA2pWcLD9db.jpg"
+          },
+          {
+            "name": "Dean Norris",
+            "character": "Hank Schrader",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/mKRrEbsxAX3ro700HsViFArRM7l.jpg"
+          },
+          {
+            "name": "Betsy Brandt",
+            "character": "Marie Schrader",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/xAnuzyjdMbQq9L1c4JNwXL52Wm4.jpg"
+          },
+          {
+            "name": "Bob Odenkirk",
+            "character": "Saul Goodman",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/rF0Lb6SBhGSTvjRffmlKRSeI3jE.jpg"
+          },
+          {
+            "name": "Jonathan Banks",
+            "character": "Mike Ehrmantraut",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/bswk26L13PvY4iMTwUTAsepXCLv.jpg"
+          }
+        ],
+        "seasonCount": 5,
+        "episodeCount": 62,
+        "trailerUrl": "https://www.youtube.com/watch?v=XZ8daibM3AE",
+        "watchProviders": [
+          {
+            "name": "Netflix",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Netflix Standard with Ads",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/dpR8r13zWDeUR0QkzWidrdMxa56.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "buy"
+          }
+        ],
+        "similar": [
+          {
+            "id": "tmdb:series:136",
+            "title": "Thriller",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/bRfxYga00zCB29fha9zWLsed0tn.jpg"
+          },
+          {
+            "id": "tmdb:series:89",
+            "title": "Titus",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/Ab7WWSBFSYbZVXORydeEaPltG9K.jpg"
+          },
+          {
+            "id": "tmdb:series:186",
+            "title": "Weeds",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/gKUsBTa5b0GY7U4iWBseeBalfjO.jpg"
+          },
+          {
+            "id": "tmdb:series:57273",
+            "title": "The Red Road",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/hlUbfYYGmWfLwdCh2H78nRomSg1.jpg"
+          },
+          {
+            "id": "tmdb:series:57391",
+            "title": "HAPPYish",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/emjm7JDQMrZ8YWGmLLw9pe6vnNQ.jpg"
+          },
+          {
+            "id": "tmdb:series:203506",
+            "title": "Segunda Enseñanza",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/mGwQ4pyhdknkVLlujpY6Gq1GOd.jpg"
+          },
+          {
+            "id": "tmdb:series:234921",
+            "title": "Memento Mori",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/ubJLcy2JjU0g2AIYPcpAgChgGQo.jpg"
+          },
+          {
+            "id": "tmdb:series:203704",
+            "title": "Junji Ito Maniac: Japanese Tales of the Macabre",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/eE3vyu2F8upsQujhS8IP7QiG8Hm.jpg"
+          },
+          {
+            "id": "tmdb:series:121950",
+            "title": "Snow Angels",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/tLIwhWpfDFqIsIEp44MRftNT0ea.jpg"
+          },
+          {
+            "id": "tmdb:series:292",
+            "title": "Moral Orel",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/1OSdgNEIYzCDYDmvJcGGBXgsAnR.jpg"
+          },
+          {
+            "id": "tmdb:series:407",
+            "title": "Sugar Rush",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/YEW7UwhDpVo6N1tpNHGmC9ZjNO.jpg"
+          },
+          {
+            "id": "tmdb:series:28007",
+            "title": "The Agatha Christie Hour",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/wKL621qo5aKct3Wu0NEEgClydXG.jpg"
+          }
+        ]
+      },
+      "status": "watching",
+      "personalRating": null,
+      "favorite": false,
+      "notes": "",
+      "tags": [
+        "drama"
+      ],
+      "startedAt": "2026-07-13T16:30:17.675Z",
+      "finishedAt": null,
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 20,
+        "watchedSeasons": 3
+      },
+      "addedAt": "2026-07-13T16:30:17.675Z",
+      "updatedAt": "2026-07-13T16:30:17.675Z"
+    },
+    {
+      "id": "b140dc6b-c706-4974-9dbf-673c824007b5",
+      "media": {
+        "id": "tmdb:series:2316",
+        "provider": "tmdb",
+        "providerId": "2316",
+        "type": "series",
+        "title": "The Office",
+        "originalTitle": "The Office",
+        "year": 2005,
+        "posterUrl": "https://image.tmdb.org/t/p/w500/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg",
+        "backdropUrl": "https://image.tmdb.org/t/p/w1280/mLyW3UTgi2lsMdtueYODcfAB9Ku.jpg",
+        "overview": "The everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company.",
+        "rating": 8.6,
+        "genres": [
+          "Comedy"
+        ],
+        "runtimeMinutes": null,
+        "releaseDate": "2005-03-24",
+        "status": "Ended",
+        "productionCompanies": [
+          "Universal Television",
+          "Deedle-Dee Productions",
+          "Reveille Productions",
+          "Shine America",
+          "Universal Media Studios"
+        ],
+        "director": "Greg Daniels",
+        "cast": [
+          {
+            "name": "Rainn Wilson",
+            "character": "Dwight Schrute",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/yRTElSeC3q9nBqBuleI6OODlDMS.jpg"
+          },
+          {
+            "name": "John Krasinski",
+            "character": "Jim Halpert",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/pmVGDb6Yl6OyFcHVGbu1EYNfyFK.jpg"
+          },
+          {
+            "name": "Jenna Fischer",
+            "character": "Pam Beesly",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/mfKRbOHTPNi9jFSthtjl4FGVZv6.jpg"
+          },
+          {
+            "name": "Ed Helms",
+            "character": "Andy Bernard",
+            "profileUrl": "https://image.tmdb.org/t/p/w185/gPZ8tZaNQGAc3KZRIPp9rgGbEnN.jpg"
+          }
+        ],
+        "seasonCount": 9,
+        "episodeCount": 186,
+        "trailerUrl": "https://www.youtube.com/watch?v=-C2z-nshFts",
+        "watchProviders": [
+          {
+            "name": "Peacock Premium",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/2aGrp1xw3qhwCYvNGAJZPdjfeeX.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "YouTube TV",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/x9zOHTUkQzt3PgPVKbMH9CKBwLK.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Peacock Premium Plus",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/drPlq5beqXtBaP7MNs8W616YRhm.jpg",
+            "type": "stream"
+          },
+          {
+            "name": "Amazon Video",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/qR6FKvnPBx2O37FDg8PNM7efwF3.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Apple TV Store",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/SPnB1qiCkYfirS2it3hZORwGVn.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Google Play Movies",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "type": "buy"
+          },
+          {
+            "name": "Fandango At Home",
+            "logoUrl": "https://image.tmdb.org/t/p/w92/oIXE9vJdkilIxCLAtlbtiqewgvn.jpg",
+            "type": "buy"
+          }
+        ],
+        "similar": [
+          {
+            "id": "tmdb:series:1528",
+            "title": "Phil of the Future",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/Aq3GfvfcWnaI8IgQwocz6mhNkzb.jpg"
+          },
+          {
+            "id": "tmdb:series:1530",
+            "title": "My Three Sons",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/2BGjuEKFtq43P3HeYSPWcX9E5et.jpg"
+          },
+          {
+            "id": "tmdb:series:1533",
+            "title": "Caméra Café",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/1kd7wM61z4qmmjiuN2ZzgTJp07.jpg"
+          },
+          {
+            "id": "tmdb:series:301447",
+            "title": "From the personal life of the Pilot brothers",
+            "posterUrl": null
+          },
+          {
+            "id": "tmdb:series:301515",
+            "title": "TechTown Middle Ages",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/8tWmxW8fP6mPZEjjdZ76mF5EIa6.jpg"
+          },
+          {
+            "id": "tmdb:series:1558",
+            "title": "Home Improvement",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/aBBXL6YIYbUPBRAVYdEUW46oqsA.jpg"
+          },
+          {
+            "id": "tmdb:series:1561",
+            "title": "Crumbs",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/1AMpzQl8K8pPVjvdBUyOhfpACMh.jpg"
+          },
+          {
+            "id": "tmdb:series:1566",
+            "title": "All of Us",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/5ydBzxhOhJKI8sGtYKuMP7wEele.jpg"
+          },
+          {
+            "id": "tmdb:series:1578",
+            "title": "Out of This World",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qyvr4gE5RbIldFlVeJBHn60VQfd.jpg"
+          },
+          {
+            "id": "tmdb:series:1580",
+            "title": "Gidget",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/qrE03wqilfHppMB39VvHrCW6oNs.jpg"
+          },
+          {
+            "id": "tmdb:series:91230",
+            "title": "WTH: Welcome to Howler",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/ndvXYUPQErQWYl1MX6byABrnjdk.jpg"
+          },
+          {
+            "id": "tmdb:series:1400",
+            "title": "Seinfeld",
+            "posterUrl": "https://image.tmdb.org/t/p/w500/aCw8ONfyz3AhngVQa1E2Ss4KSUQ.jpg"
+          }
+        ]
+      },
+      "status": "completed",
+      "personalRating": 8.5,
+      "favorite": false,
+      "notes": "La veo de fondo todo el tiempo.",
+      "tags": [
+        "comedia",
+        "para relajar"
+      ],
+      "startedAt": "2026-06-28T16:30:18.248Z",
+      "finishedAt": "2026-06-28T16:30:18.248Z",
+      "rewatchCount": 3,
+      "progress": {
+        "watchedEpisodes": 201,
+        "watchedSeasons": 9
+      },
+      "addedAt": "2026-06-28T16:30:18.248Z",
+      "updatedAt": "2026-06-28T16:30:18.248Z"
+    },
+    {
+      "id": "4e44f2fc-8731-4d6a-b62a-8c26ce816da9",
+      "media": {
+        "id": "anilist:anime:20",
+        "provider": "anilist",
+        "providerId": "20",
+        "type": "anime",
+        "title": "Naruto",
+        "originalTitle": "NARUTO -ナルト-",
+        "year": 2002,
+        "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-dE6UHbFFg1A5.jpg",
+        "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20-HHxhPj5JD13a.jpg",
+        "overview": "Naruto Uzumaki, a hyperactive and knuckle-headed ninja, lives in Konohagakure, the Hidden Leaf village. Moments prior to his birth, a huge demon known as the Kyuubi, the Nine-tailed Fox, attacked Konohagakure and wreaked havoc. In order to put an end to the Kyuubi's rampage, the leader of the village, the 4th Hokage, sacrificed his life and sealed the monstrous beast inside the newborn Naruto. \n\nShunned because of the presence of the Kyuubi inside him, Naruto struggles to find his place in the village. He strives to become the Hokage of Konohagakure, and he meets many friends and foes along the way. \n\n(Source: MAL Rewrite)",
+        "rating": 8,
+        "genres": [
+          "Action",
+          "Adventure",
+          "Comedy",
+          "Drama",
+          "Fantasy",
+          "Supernatural"
+        ],
+        "runtimeMinutes": 23,
+        "releaseDate": "2002-01-01",
+        "status": "FINISHED",
+        "productionCompanies": [
+          "Studio Pierrot",
+          "TV Tokyo",
+          "Aniplex",
+          "Viz Media",
+          "Shueisha",
+          "KSS",
+          "SME Visual Works",
+          "Rakuonsha"
+        ],
+        "director": "Studio Pierrot",
+        "cast": [
+          {
+            "name": "Sakura Haruno",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b145-IorfpI8arxeX.png"
+          },
+          {
+            "name": "Naruto Uzumaki",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b17-phjcWCkRuIhu.png"
+          },
+          {
+            "name": "Kakashi Hatake",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b85-mkVBh2yjxjmx.png"
+          },
+          {
+            "name": "Sasuke Uchiha",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b13-SISLEw1oAD7a.png"
+          },
+          {
+            "name": "Sagi",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n23215-psvpC0r5tkkI.png"
+          },
+          {
+            "name": "Sazanami",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n17546-zdnPQ3ZdKJjz.png"
+          },
+          {
+            "name": "Hiruzen Sarutobi",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n7571-fKldLuBWUtCO.png"
+          },
+          {
+            "name": "Tenten",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b3710-OmDNYKi0Xfjk.png"
+          },
+          {
+            "name": "Menma",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n8810-eKdwxvVuAgjG.png"
+          },
+          {
+            "name": "Tayuya",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n3052-1V7iclO45tia.png"
+          },
+          {
+            "name": "Konohamaru Sarutobi",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n3889-gCUewPsRY2kD.png"
+          },
+          {
+            "name": "Zetsu",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/3150.jpg"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": 220,
+        "trailerUrl": "https://www.youtube.com/watch?v=-G9BqkgZXRA",
+        "similar": [
+          {
+            "id": "anilist:anime:21",
+            "title": "ONE PIECE",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21-ELSYx3yMPcKM.jpg"
+          },
+          {
+            "id": "anilist:anime:97940",
+            "title": "Black Clover",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97940-fyh8o7gNbha0.png"
+          },
+          {
+            "id": "anilist:anime:21459",
+            "title": "My Hero Academia",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21459-nYh85uj2Fuwr.jpg"
+          },
+          {
+            "id": "anilist:anime:269",
+            "title": "Bleach",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx269-d2GmRkJbMopq.png"
+          },
+          {
+            "id": "anilist:anime:113415",
+            "title": "JUJUTSU KAISEN",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx113415-LHBAeoZDIsnF.jpg"
+          },
+          {
+            "id": "anilist:anime:97938",
+            "title": "Boruto: Naruto Next Generations",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97938-BnF6M5yTaNB1.jpg"
+          },
+          {
+            "id": "anilist:anime:11061",
+            "title": "Hunter x Hunter (2011)",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11061-y5gsT1hoHuHw.png"
+          },
+          {
+            "id": "anilist:anime:223",
+            "title": "Dragon Ball",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx223-scE5uJfXqqj8.png"
+          },
+          {
+            "id": "anilist:anime:101922",
+            "title": "Demon Slayer: Kimetsu no Yaiba",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101922-WBsBl0ClmgYL.jpg"
+          },
+          {
+            "id": "anilist:anime:813",
+            "title": "Dragon Ball Z",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx813-ZhnFNOeCU5dQ.png"
+          },
+          {
+            "id": "anilist:anime:116674",
+            "title": "BLEACH: Thousand-Year Blood War",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx116674-p3zK4PUX2Aag.jpg"
+          },
+          {
+            "id": "anilist:anime:145064",
+            "title": "JUJUTSU KAISEN Season 2",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx145064-hSNRJM03pvv1.jpg"
+          }
+        ]
+      },
+      "status": "watching",
+      "personalRating": null,
+      "favorite": false,
+      "notes": "",
+      "tags": [
+        "shonen"
+      ],
+      "startedAt": "2026-07-15T16:30:19.704Z",
+      "finishedAt": null,
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 45,
+        "watchedSeasons": 1
+      },
+      "addedAt": "2026-07-15T16:30:19.704Z",
+      "updatedAt": "2026-07-15T16:30:19.704Z"
+    },
+    {
+      "id": "fb2ee762-144a-4b44-844f-202e785ae1e2",
+      "media": {
+        "id": "anilist:anime:16498",
+        "provider": "anilist",
+        "providerId": "16498",
+        "type": "anime",
+        "title": "Attack on Titan",
+        "originalTitle": "進撃の巨人",
+        "year": 2013,
+        "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-buvcRTBx4NSm.jpg",
+        "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
+        "overview": "Several hundred years ago, humans were nearly exterminated by titans. Titans are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of titans.\n\n\r\nFlash forward to the present and the city has not seen a titan in over 100 years. Teenage boy Eren and his foster sister Mikasa witness something horrific as the city walls are destroyed by a colossal titan that appears out of thin air. As the smaller titans flood the city, the two kids watch in horror as their mother is eaten alive. Eren vows that he will murder every single titan and take revenge for all of mankind.\n\n\r\n(Source: MangaHelpers)",
+        "rating": 8.5,
+        "genres": [
+          "Action",
+          "Drama",
+          "Fantasy",
+          "Mystery"
+        ],
+        "runtimeMinutes": 24,
+        "releaseDate": "2013-01-01",
+        "status": "FINISHED",
+        "productionCompanies": [
+          "WIT STUDIO",
+          "Pony Canyon",
+          "Kodansha",
+          "Production I.G",
+          "Dentsu",
+          "Pony Canyon Enterprise",
+          "Mainichi Broadcasting System"
+        ],
+        "director": "WIT STUDIO",
+        "cast": [
+          {
+            "name": "Mikasa Ackerman",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b40881-F3gr1PkreDvj.png"
+          },
+          {
+            "name": "Eren Yeager",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b40882-dsj7IP943WFF.jpg"
+          },
+          {
+            "name": "Armin Arlert",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b46494-g7xYYuBtYPnO.png"
+          },
+          {
+            "name": "Sasha Blouse",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b45887-QPtJH0KwqthW.jpg"
+          },
+          {
+            "name": "Ymir",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b71479-huCD908XIdqv.png"
+          },
+          {
+            "name": "Petra Ral",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n62501-CfTtAAgs64nE.jpg"
+          },
+          {
+            "name": "Bart",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b84327-Wg2P1FSDecGc.jpg"
+          },
+          {
+            "name": "Marco Bott",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b62479-mYcTkU1RXymL.jpg"
+          },
+          {
+            "name": "Moses",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b84309-ntK7TKP6RkPe.png"
+          },
+          {
+            "name": "Gunther Schultz",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b71691-9xxv0NFB2CWm.png"
+          },
+          {
+            "name": "Darius Zackly",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b71125-XXymqijVoYzV.png"
+          },
+          {
+            "name": "Jurgen",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b131455-8WPESzF24pcm.png"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": 25,
+        "trailerUrl": "https://www.youtube.com/watch?v=LHtdKWJdif4\t",
+        "similar": [
+          {
+            "id": "anilist:anime:101348",
+            "title": "Vinland Saga",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101348-2fhDFPCuMNiz.jpg"
+          },
+          {
+            "id": "anilist:anime:101759",
+            "title": "The Promised Neverland",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101759-8UR7r9MNVpz2.jpg"
+          },
+          {
+            "id": "anilist:anime:21196",
+            "title": "Kabaneri of the Iron Fortress",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21196-2PfPfIDrxKki.jpg"
+          },
+          {
+            "id": "anilist:anime:116589",
+            "title": "86 EIGHTY-SIX",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx116589-KawXHB6sApFt.jpg"
+          },
+          {
+            "id": "anilist:anime:20829",
+            "title": "Seraph of the End: Vampire Reign",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20829-pgsXVjrfyI5V.png"
+          },
+          {
+            "id": "anilist:anime:131586",
+            "title": "86 EIGHTY-SIX Part 2",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx131586-JhC0wcBi09EZ.jpg"
+          },
+          {
+            "id": "anilist:anime:153288",
+            "title": "Kaiju No. 8",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx153288-25FBfFJzEQ5O.jpg"
+          },
+          {
+            "id": "anilist:anime:5114",
+            "title": "Fullmetal Alchemist: Brotherhood",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg"
+          },
+          {
+            "id": "anilist:anime:110353",
+            "title": "DECA-DENCE",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx110353-XGYSsii7qJeK.png"
+          },
+          {
+            "id": "anilist:anime:20623",
+            "title": "Parasyte -the maxim-",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20623-dUARfggnNDOe.jpg"
+          },
+          {
+            "id": "anilist:anime:127230",
+            "title": "Chainsaw Man",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx127230-DdP4vAdssLoz.png"
+          },
+          {
+            "id": "anilist:anime:20993",
+            "title": "Seraph of the End: Battle in Nagoya",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20993-c34UTma2bCcv.jpg"
+          }
+        ]
+      },
+      "status": "completed",
+      "personalRating": 9,
+      "favorite": true,
+      "notes": "",
+      "tags": [
+        "shonen",
+        "oscuro"
+      ],
+      "startedAt": "2026-07-03T16:30:20.443Z",
+      "finishedAt": "2026-07-03T16:30:20.443Z",
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 25,
+        "watchedSeasons": 1
+      },
+      "addedAt": "2026-07-03T16:30:20.443Z",
+      "updatedAt": "2026-07-03T16:30:20.443Z"
+    },
+    {
+      "id": "dd2b19d8-145a-4bf1-bf41-6685c8b2af56",
+      "media": {
+        "id": "anilist:anime:5114",
+        "provider": "anilist",
+        "providerId": "5114",
+        "type": "anime",
+        "title": "Fullmetal Alchemist: Brotherhood",
+        "originalTitle": "鋼の錬金術師 FULLMETAL ALCHEMIST",
+        "year": 2009,
+        "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-nSWCgQlmOMtj.jpg",
+        "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5114-q0V5URebphSG.jpg",
+        "overview": "\"In order for something to be obtained, something of equal value must be lost.\"\n\nAlchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses his left leg, Alphonse his physical body. It is only by the desperate sacrifice of Edward's right arm that he is able to affix Alphonse's soul to a suit of armor. Devastated and alone, it is the hope that they would both eventually return to their original bodies that gives Edward the inspiration to obtain metal limbs called \"automail\" and become a state alchemist, the Fullmetal Alchemist.\n\nThree years of searching later, the brothers seek the Philosopher's Stone, a mythical relic that allows an alchemist to overcome the Law of Equivalent Exchange. Even with military allies Colonel Roy Mustang, Lieutenant Riza Hawkeye, and Lieutenant Colonel Maes Hughes on their side, the brothers find themselves caught up in a nationwide conspiracy that leads them not only to the true nature of the elusive Philosopher's Stone, but their country's murky history as well. In between finding a serial killer and racing against time, Edward and Alphonse must ask themselves if what they are doing will make them human again... or take away their humanity.\n\n(Source: MAL Rewrite)",
+        "rating": 9,
+        "genres": [
+          "Action",
+          "Adventure",
+          "Drama",
+          "Fantasy"
+        ],
+        "runtimeMinutes": 25,
+        "releaseDate": "2009-01-01",
+        "status": "FINISHED",
+        "productionCompanies": [
+          "bones",
+          "Aniplex",
+          "Square Enix",
+          "Mainichi Broadcasting System",
+          "Aniplex of America"
+        ],
+        "director": "bones",
+        "cast": [
+          {
+            "name": "Alphonse Elric",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b12-tCKu8yK5kFL5.jpg"
+          },
+          {
+            "name": "Edward Elric",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b11-TA5Nuk7EDUZG.jpg"
+          },
+          {
+            "name": "Rosé Tomas",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b5988-Wo1TMSnDnPIm.jpg"
+          },
+          {
+            "name": "Miles",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/15540.jpg"
+          },
+          {
+            "name": "Paninya",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/10974.jpg"
+          },
+          {
+            "name": "May Chang",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/15532.jpg"
+          },
+          {
+            "name": "Neil",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n41216-H4lznpL0Bzor.png"
+          },
+          {
+            "name": "Sloth",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b15543-InwPEKIOdTvX.png"
+          },
+          {
+            "name": "Knox",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b27028-pv8abhTjBcVj.jpg"
+          },
+          {
+            "name": "Garfiel",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b35144-UjyMf6g71t5c.png"
+          },
+          {
+            "name": "Damiano",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n52739-CVU3CZq0UBx7.png"
+          },
+          {
+            "name": "Shifu",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/10970.jpg"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": 64,
+        "trailerUrl": null,
+        "similar": [
+          {
+            "id": "anilist:anime:11061",
+            "title": "Hunter x Hunter (2011)",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11061-y5gsT1hoHuHw.png"
+          },
+          {
+            "id": "anilist:anime:104578",
+            "title": "Attack on Titan Season 3 Part 2",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx104578-k61nx3LPjvgd.jpg"
+          },
+          {
+            "id": "anilist:anime:3588",
+            "title": "Soul Eater",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx3588-fSMggQoFSbUI.png"
+          },
+          {
+            "id": "anilist:anime:1482",
+            "title": "D.Gray-man",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1482-6jc8ZVSmHuLo.jpg"
+          },
+          {
+            "id": "anilist:anime:195600",
+            "title": "Daemons of the Shadow Realm",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx195600-moI0UFArtOme.jpg"
+          },
+          {
+            "id": "anilist:anime:21",
+            "title": "ONE PIECE",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21-ELSYx3yMPcKM.jpg"
+          },
+          {
+            "id": "anilist:anime:16498",
+            "title": "Attack on Titan",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx16498-buvcRTBx4NSm.jpg"
+          },
+          {
+            "id": "anilist:anime:147105",
+            "title": "Witch Hat Atelier",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx147105-rwOX8qyUy8gV.jpg"
+          },
+          {
+            "id": "anilist:anime:101922",
+            "title": "Demon Slayer: Kimetsu no Yaiba",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101922-WBsBl0ClmgYL.jpg"
+          },
+          {
+            "id": "anilist:anime:1735",
+            "title": "Naruto: Shippuden",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1735-kGfVm0YqCPcu.png"
+          },
+          {
+            "id": "anilist:anime:151514",
+            "title": "Orb: On the Movements of the Earth",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx151514-Y0d82Ah2ZOHX.jpg"
+          },
+          {
+            "id": "anilist:anime:11741",
+            "title": "Fate/Zero Season 2",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx11741-oEy1fJHYm2zJ.jpg"
+          }
+        ]
+      },
+      "status": "plan_to_watch",
+      "personalRating": null,
+      "favorite": false,
+      "notes": "Me lo recomendaron mil veces, todavía no arranqué.",
+      "tags": [
+        "recomendado"
+      ],
+      "startedAt": null,
+      "finishedAt": null,
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 0,
+        "watchedSeasons": 0
+      },
+      "addedAt": "2026-07-16T16:30:21.427Z",
+      "updatedAt": "2026-07-16T16:30:21.427Z"
+    },
+    {
+      "id": "deb992f5-f3a6-40c8-b5ec-3a081d3289ee",
+      "media": {
+        "id": "anilist:anime:1535",
+        "provider": "anilist",
+        "providerId": "1535",
+        "type": "anime",
+        "title": "Death Note",
+        "originalTitle": "DEATH NOTE",
+        "year": 2006,
+        "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-kUgkcrfOrkUM.jpg",
+        "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1535.jpg",
+        "overview": "Light Yagami is a genius high school student who is about to learn about life through a book of death. When a bored shinigami, a God of Death, named Ryuk drops a black notepad called a Death Note, Light receives power over life and death with the stroke of a pen. Determined to use this dark gift for the best, Light sets out to rid the world of evil… namely, the people he believes to be evil. Should anyone hold such power?\n\nThe consequences of Light’s actions will set the world ablaze.\n\n(Source: VIZ Media)",
+        "rating": 8.4,
+        "genres": [
+          "Mystery",
+          "Psychological",
+          "Supernatural",
+          "Thriller"
+        ],
+        "runtimeMinutes": 23,
+        "releaseDate": "2006-01-01",
+        "status": "FINISHED",
+        "productionCompanies": [
+          "MADHOUSE",
+          "VAP",
+          "Viz Media",
+          "Nippon Television Network",
+          "Konami",
+          "Ashi Productions",
+          "Shueisha",
+          "Selecta Visión"
+        ],
+        "director": "MADHOUSE",
+        "cast": [
+          {
+            "name": "Misa Amane",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b835-CiZa8y2z2gCz.png"
+          },
+          {
+            "name": "Ryuk",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b75-IkEpzO21LgFy.jpg"
+          },
+          {
+            "name": "Light Yagami",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b80-26EhwSsSqQ50.png"
+          },
+          {
+            "name": "L Lawliet",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b71-1W4panC53vfs.png"
+          },
+          {
+            "name": "Nate River",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n464-6KeJpU6g7Hwj.jpg"
+          },
+          {
+            "name": "Mihael Keehl",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/b463-QBLeLf6XxVg6.png"
+          },
+          {
+            "name": "Halle Bullook",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n3769-QJUZtTvWhOJt.png"
+          },
+          {
+            "name": "Reiji Namikawa",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n1929-TYRt1UCHOS33.png"
+          },
+          {
+            "name": "Guuk",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/79469.jpg"
+          },
+          {
+            "name": "Sachiko Yagami",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n14735-FfrdE7p4Kfxd.png"
+          },
+          {
+            "name": "Teru Mikami",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n1904-xKw2NgiE6VbU.jpg"
+          },
+          {
+            "name": "Sayu Yagami",
+            "character": "",
+            "profileUrl": "https://s4.anilist.co/file/anilistcdn/character/medium/n8135-UgvqHuoMyZy5.png"
+          }
+        ],
+        "seasonCount": null,
+        "episodeCount": 37,
+        "trailerUrl": "https://www.youtube.com/watch?v=NlJZ-YgAt-c",
+        "similar": [
+          {
+            "id": "anilist:anime:1575",
+            "title": "Code Geass: Lelouch of the Rebellion",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1575-hsmWM2ydNm1m.jpg"
+          },
+          {
+            "id": "anilist:anime:19",
+            "title": "Monster",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx19-gtMC64182sm4.jpg"
+          },
+          {
+            "id": "anilist:anime:2904",
+            "title": "Code Geass: Lelouch of the Rebellion R2",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx2904-Fet9Q33suC7G.jpg"
+          },
+          {
+            "id": "anilist:anime:101759",
+            "title": "The Promised Neverland",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx101759-8UR7r9MNVpz2.jpg"
+          },
+          {
+            "id": "anilist:anime:20623",
+            "title": "Parasyte -the maxim-",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20623-dUARfggnNDOe.jpg"
+          },
+          {
+            "id": "anilist:anime:20661",
+            "title": "Terror in Resonance",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20661-aCR7QgzDfOSI.png"
+          },
+          {
+            "id": "anilist:anime:114124",
+            "title": "Moriarty the Patriot",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx114124-def92qPuIVeK.jpg"
+          },
+          {
+            "id": "anilist:anime:20931",
+            "title": "Death Parade",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx20931-bktYqOcxPERi.jpg"
+          },
+          {
+            "id": "anilist:anime:117343",
+            "title": "Talentless Nana",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx117343-NgCLZTaxallv.jpg"
+          },
+          {
+            "id": "anilist:anime:127401",
+            "title": "Platinum End",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx127401-fVKVbuIE5W5Q.jpg"
+          },
+          {
+            "id": "anilist:anime:13601",
+            "title": "PSYCHO-PASS",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx13601-i42VFuHpqEOJ.jpg"
+          },
+          {
+            "id": "anilist:anime:97922",
+            "title": "INUYASHIKI LAST HERO",
+            "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97922-qrGn5fkQinDs.jpg"
+          }
+        ]
+      },
+      "status": "dropped",
+      "personalRating": 6,
+      "favorite": false,
+      "notes": "No me convenció cómo cerró la historia.",
+      "tags": [],
+      "startedAt": "2026-05-29T16:30:22.115Z",
+      "finishedAt": "2026-05-29T16:30:22.115Z",
+      "rewatchCount": 0,
+      "progress": {
+        "watchedEpisodes": 25,
+        "watchedSeasons": 1
+      },
+      "addedAt": "2026-05-29T16:30:22.115Z",
+      "updatedAt": "2026-05-29T16:30:22.115Z"
+    }
+  ],
+  "lists": []
+}

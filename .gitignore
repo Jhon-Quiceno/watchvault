@@ -43,6 +43,8 @@ next-env.d.ts
 
 # local JSON data store (placeholder persistence until PostgreSQL)
 /data/*.json
+# ...except the bundled, committed seed data for the public demo deployment
+!/data/demo-seed.json
 
 # local AI tooling state (not part of the app)
 /.atl/
