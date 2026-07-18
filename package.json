@@ -2,6 +2,12 @@
   "name": "watchvault",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal library for tracking movies, series, and anime — TMDB + AniList search, dashboard, stats, and more.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jhon-Quiceno/watchvault.git"
+  },
+  "homepage": "https://github.com/Jhon-Quiceno/watchvault",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
