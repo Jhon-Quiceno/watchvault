@@ -1,4 +1,4 @@
-import { BlobPreconditionFailedError, get, put } from "@vercel/blob";
+import { BlobNotFoundError, BlobPreconditionFailedError, get, head, put } from "@vercel/blob";
 
 import type { CustomList, LibraryEntry } from "@/types/media";
 import type { LibraryRepository } from "@/server/repositories/library-repository";
@@ -11,11 +11,6 @@ interface LibraryStore {
 const BLOB_PATHNAME = "library.json";
 const MAX_WRITE_RETRIES = 8;
 
-interface StoreSnapshot {
-  store: LibraryStore;
-  etag: string | null;
-}
-
 /**
  * Vercel Blob-based `LibraryRepository` implementation. Serverless
  * functions have an ephemeral filesystem, so the whole library is kept as
@@ -23,18 +18,38 @@ interface StoreSnapshot {
  * public contract as `JsonLibraryRepository`.
  */
 export class BlobLibraryRepository implements LibraryRepository {
-  private async readSnapshot(): Promise<StoreSnapshot> {
+  private async readContent(): Promise<LibraryStore> {
     const result = await get(BLOB_PATHNAME, {
       access: "private",
       useCache: false,
     });
 
     if (!result || result.stream === null) {
-      return { store: { entries: [], lists: [] }, etag: null };
+      return { entries: [], lists: [] };
     }
 
     const raw = await new Response(result.stream).text();
-    return { store: JSON.parse(raw) as LibraryStore, etag: result.blob.etag };
+    return JSON.parse(raw) as LibraryStore;
+  }
+
+  /**
+   * `get()`'s etag can come back as a weak validator (`W/"..."`, likely
+   * from on-the-fly compression on the CDN-fronted blob URL it fetches
+   * from). `put`'s `ifMatch` does a strong comparison, so a weak etag is
+   * REJECTED EVEN AGAINST ITSELF — every conditional write fails forever,
+   * not just under real contention. `head()` hits Blob's metadata API
+   * directly (a different endpoint than `get()`) and returns the strong
+   * etag conditional writes actually compare against — this matches the
+   * pattern in Vercel's own `ifMatch` documentation.
+   */
+  private async readEtag(): Promise<string | null> {
+    try {
+      const meta = await head(BLOB_PATHNAME);
+      return meta.etag;
+    } catch (error) {
+      if (error instanceof BlobNotFoundError) return null;
+      throw error;
+    }
   }
 
   /**
@@ -52,14 +67,8 @@ export class BlobLibraryRepository implements LibraryRepository {
     let lastError: unknown;
 
     for (let attempt = 0; attempt < MAX_WRITE_RETRIES; attempt++) {
-      const { store, etag } = await this.readSnapshot();
+      const [store, etag] = await Promise.all([this.readContent(), this.readEtag()]);
       const result = mutate(store);
-
-      // TEMPORARY diagnostic logging while investigating a persistent
-      // precondition-failure bug — remove once root-caused.
-      console.log(
-        `[blob-repo] attempt=${attempt} readEtag=${etag} entries=${store.entries.length}`,
-      );
 
       try {
         await put(BLOB_PATHNAME, JSON.stringify(store), {
@@ -72,9 +81,6 @@ export class BlobLibraryRepository implements LibraryRepository {
       } catch (error) {
         if (error instanceof BlobPreconditionFailedError) {
           lastError = error;
-          console.log(
-            `[blob-repo] precondition failed attempt=${attempt} sentEtag=${etag} message=${error.message}`,
-          );
           await sleep(25 + Math.random() * 50);
           continue;
         }
@@ -88,12 +94,12 @@ export class BlobLibraryRepository implements LibraryRepository {
   }
 
   async getAllEntries(): Promise<LibraryEntry[]> {
-    const { store } = await this.readSnapshot();
+    const store = await this.readContent();
     return store.entries;
   }
 
   async getEntryById(id: string): Promise<LibraryEntry | null> {
-    const { store } = await this.readSnapshot();
+    const store = await this.readContent();
     return store.entries.find((entry) => entry.id === id) ?? null;
   }
 
@@ -122,12 +128,12 @@ export class BlobLibraryRepository implements LibraryRepository {
   }
 
   async getAllLists(): Promise<CustomList[]> {
-    const { store } = await this.readSnapshot();
+    const store = await this.readContent();
     return store.lists;
   }
 
   async getListById(id: string): Promise<CustomList | null> {
-    const { store } = await this.readSnapshot();
+    const store = await this.readContent();
     return store.lists.find((list) => list.id === id) ?? null;
   }
 
