@@ -9,7 +9,7 @@ interface LibraryStore {
 }
 
 const BLOB_PATHNAME = "library.json";
-const MAX_WRITE_RETRIES = 5;
+const MAX_WRITE_RETRIES = 8;
 
 interface StoreSnapshot {
   store: LibraryStore;

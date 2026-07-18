@@ -89,9 +89,13 @@ export function EntryDetailDialog({
             entry={entry}
             saving={updateEntry.isPending}
             deleting={removeEntry.isPending}
-            onSave={(patch) =>
-              updateEntry.mutate({ id: entry.id, patch }, { onSuccess: () => onOpenChange(false) })
-            }
+            onSave={(patch) => {
+              if (updateEntry.isPending) return;
+              updateEntry.mutate(
+                { id: entry.id, patch },
+                { onSuccess: () => onOpenChange(false) },
+              );
+            }}
             onDelete={() =>
               removeEntry.mutate(entry.id, { onSuccess: () => onOpenChange(false) })
             }
