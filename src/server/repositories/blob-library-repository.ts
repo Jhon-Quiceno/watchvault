@@ -55,6 +55,12 @@ export class BlobLibraryRepository implements LibraryRepository {
       const { store, etag } = await this.readSnapshot();
       const result = mutate(store);
 
+      // TEMPORARY diagnostic logging while investigating a persistent
+      // precondition-failure bug — remove once root-caused.
+      console.log(
+        `[blob-repo] attempt=${attempt} readEtag=${etag} entries=${store.entries.length}`,
+      );
+
       try {
         await put(BLOB_PATHNAME, JSON.stringify(store), {
           access: "private",
@@ -66,6 +72,9 @@ export class BlobLibraryRepository implements LibraryRepository {
       } catch (error) {
         if (error instanceof BlobPreconditionFailedError) {
           lastError = error;
+          console.log(
+            `[blob-repo] precondition failed attempt=${attempt} sentEtag=${etag} message=${error.message}`,
+          );
           await sleep(25 + Math.random() * 50);
           continue;
         }
