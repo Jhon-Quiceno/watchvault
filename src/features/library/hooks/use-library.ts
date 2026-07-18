@@ -1,5 +1,6 @@
 "use client";
 
+import { isAxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -7,6 +8,15 @@ import type { LibraryEntry } from "@/types/media";
 import type { AddToLibraryInput, UpdateEntryInput } from "@/lib/schemas/library";
 import { apiClient } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
+
+/** Demo deployments block writes with a 403; show a distinct, friendlier toast for that case. */
+function showMutationError(error: unknown, fallbackMessage: string) {
+  if (isAxiosError(error) && error.response?.status === 403) {
+    toast.info(error.response.data?.error ?? "Estás en modo demo: los cambios no se guardan.");
+    return;
+  }
+  toast.error(fallbackMessage);
+}
 
 async function fetchLibrary(): Promise<LibraryEntry[]> {
   const { data } = await apiClient.get<{ entries: LibraryEntry[] }>("/library");
@@ -28,7 +38,7 @@ export function useAddToLibrary() {
       queryClient.invalidateQueries({ queryKey: queryKeys.library.all });
       toast.success(`“${entry.media.title}” agregado a tu vault`);
     },
-    onError: () => toast.error("No se pudo agregar este título"),
+    onError: (error) => showMutationError(error, "No se pudo agregar este título"),
   });
 }
 
@@ -59,11 +69,11 @@ export function useUpdateEntry() {
       );
       return { previous };
     },
-    onError: (_error, variables, context) => {
+    onError: (error, variables, context) => {
       if (context?.previous) {
         queryClient.setQueryData(queryKeys.library.all, context.previous);
       }
-      if (!variables.silent) toast.error("No se pudieron guardar los cambios");
+      if (!variables.silent) showMutationError(error, "No se pudieron guardar los cambios");
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.library.all });
@@ -94,11 +104,13 @@ export function useRemoveEntry() {
       );
       return { previous };
     },
-    onError: (_error, input, context) => {
+    onError: (error, input, context) => {
       if (context?.previous) {
         queryClient.setQueryData(queryKeys.library.all, context.previous);
       }
-      if (!normalizeRemoveInput(input).silent) toast.error("No se pudo quitar el título");
+      if (!normalizeRemoveInput(input).silent) {
+        showMutationError(error, "No se pudo quitar el título");
+      }
     },
     onSuccess: (_id, input) => {
       if (!normalizeRemoveInput(input).silent) toast.success("Se quitó de tu vault");

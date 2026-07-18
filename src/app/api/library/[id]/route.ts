@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { updateEntrySchema } from "@/lib/schemas/library";
+import { DemoReadOnlyError } from "@/server/repositories/demo-error";
 import {
   EntryNotFoundError,
   getEntry,
@@ -48,6 +49,9 @@ export async function PATCH(request: Request, { params }: RouteContext) {
     if (error instanceof EntryNotFoundError) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
     throw error;
   }
 }
@@ -55,6 +59,13 @@ export async function PATCH(request: Request, { params }: RouteContext) {
 /** DELETE /api/library/:id */
 export async function DELETE(_request: Request, { params }: RouteContext) {
   const { id } = await params;
-  await removeEntry(id);
-  return new NextResponse(null, { status: 204 });
+  try {
+    await removeEntry(id);
+    return new NextResponse(null, { status: 204 });
+  } catch (error) {
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
+    throw error;
+  }
 }

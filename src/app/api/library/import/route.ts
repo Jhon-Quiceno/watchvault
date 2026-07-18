@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import type { LibraryEntry } from "@/types/media";
+import { DemoReadOnlyError } from "@/server/repositories/demo-error";
 import { importEntries } from "@/server/library/library-service";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +36,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unrecognized export file" }, { status: 400 });
   }
 
-  const imported = await importEntries(parsed.data.entries as unknown as LibraryEntry[]);
-  return NextResponse.json({ imported });
+  try {
+    const imported = await importEntries(parsed.data.entries as unknown as LibraryEntry[]);
+    return NextResponse.json({ imported });
+  } catch (error) {
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
+    throw error;
+  }
 }

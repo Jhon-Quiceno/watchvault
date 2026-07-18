@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { listInputSchema } from "@/lib/schemas/library";
+import { DemoReadOnlyError } from "@/server/repositories/demo-error";
 import {
   ListNotFoundError,
   removeList,
@@ -37,6 +38,9 @@ export async function PUT(request: Request, { params }: RouteContext) {
     if (error instanceof ListNotFoundError) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
     throw error;
   }
 }
@@ -44,6 +48,13 @@ export async function PUT(request: Request, { params }: RouteContext) {
 /** DELETE /api/lists/:id */
 export async function DELETE(_request: Request, { params }: RouteContext) {
   const { id } = await params;
-  await removeList(id);
-  return new NextResponse(null, { status: 204 });
+  try {
+    await removeList(id);
+    return new NextResponse(null, { status: 204 });
+  } catch (error) {
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
+    throw error;
+  }
 }

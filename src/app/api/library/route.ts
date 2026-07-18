@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { addToLibrarySchema } from "@/lib/schemas/library";
+import { DemoReadOnlyError } from "@/server/repositories/demo-error";
 import { addEntry, listEntries } from "@/server/library/library-service";
 
 export const dynamic = "force-dynamic";
@@ -32,6 +33,9 @@ export async function POST(request: Request) {
     const entry = await addEntry(parsed.data);
     return NextResponse.json({ entry }, { status: 201 });
   } catch (error) {
+    if (error instanceof DemoReadOnlyError) {
+      return NextResponse.json({ error: error.message }, { status: 403 });
+    }
     console.error("add entry failed", error);
     return NextResponse.json({ error: "Could not add title" }, { status: 502 });
   }

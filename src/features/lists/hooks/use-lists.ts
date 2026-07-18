@@ -1,5 +1,6 @@
 "use client";
 
+import { isAxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -7,6 +8,15 @@ import type { CustomList } from "@/types/media";
 import type { ListInput } from "@/lib/schemas/library";
 import { apiClient } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
+
+/** Demo deployments block writes with a 403; show a distinct, friendlier toast for that case. */
+function showMutationError(error: unknown, fallbackMessage: string) {
+  if (isAxiosError(error) && error.response?.status === 403) {
+    toast.info(error.response.data?.error ?? "Estás en modo demo: los cambios no se guardan.");
+    return;
+  }
+  toast.error(fallbackMessage);
+}
 
 export function useLists() {
   return useQuery({
@@ -29,7 +39,7 @@ export function useCreateList() {
       queryClient.invalidateQueries({ queryKey: queryKeys.lists.all });
       toast.success("Lista creada");
     },
-    onError: () => toast.error("No se pudo crear la lista"),
+    onError: (error) => showMutationError(error, "No se pudo crear la lista"),
   });
 }
 
@@ -41,7 +51,7 @@ export function useUpdateList() {
       return data.list;
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.lists.all }),
-    onError: () => toast.error("No se pudo actualizar la lista"),
+    onError: (error) => showMutationError(error, "No se pudo actualizar la lista"),
   });
 }
 
@@ -55,6 +65,6 @@ export function useDeleteList() {
       queryClient.invalidateQueries({ queryKey: queryKeys.lists.all });
       toast.success("Lista eliminada");
     },
-    onError: () => toast.error("No se pudo eliminar la lista"),
+    onError: (error) => showMutationError(error, "No se pudo eliminar la lista"),
   });
 }

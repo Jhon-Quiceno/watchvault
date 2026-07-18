@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
-import { Download, Save, Upload } from "lucide-react";
+import { Download, LogOut, Save, Upload } from "lucide-react";
 import { toast } from "sonner";
 
 import type { CustomList, LibraryEntry } from "@/types/media";
@@ -27,11 +28,18 @@ export function ProfileView() {
   const profile = useProfile();
   const { data: entries = [] } = useLibrary();
   const queryClient = useQueryClient();
+  const router = useRouter();
   const fileInput = useRef<HTMLInputElement>(null);
 
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
   const [busy, setBusy] = useState(false);
+
+  async function logout() {
+    await apiClient.post("/auth/logout");
+    router.push("/login");
+    router.refresh();
+  }
 
   function saveProfile() {
     profile.setProfile({ name: name.trim() || "Yo", bio: bio.trim() });
@@ -161,6 +169,18 @@ export function ProfileView() {
               event.target.value = "";
             }}
           />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Sesión</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Button variant="outline" className="gap-1.5" onClick={() => void logout()}>
+            <LogOut className="size-4" />
+            Cerrar sesión
+          </Button>
         </CardContent>
       </Card>
     </div>
