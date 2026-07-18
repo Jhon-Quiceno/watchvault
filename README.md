@@ -1,12 +1,16 @@
 <p align="center">
-  <img src="./public/logo.svg" alt="Watchvault logo" width="88" height="88" />
+  <img src="./public/logo.svg" alt="Logo de Watchvault" width="88" height="88" />
 </p>
 
 <h1 align="center">Watchvault</h1>
 
-<p align="center"><strong>Your entire watch history — movies, series, and anime — in one fast, personal vault.</strong></p>
+<p align="center"><strong>Todo tu historial de películas, series y anime — en un solo vault personal y rápido.</strong></p>
 
-Watchvault is a self-hosted tracker for everything you watch. Search TMDB and AniList, preview full details before committing to anything, log it with the right status in one move, and let your dashboard, stats, and recommendations take it from there. No accounts, no social feed, no noise — just your library, built for speed.
+<p align="center">
+  🎬 <strong><a href="https://watchvault-demo.vercel.app">Probá la demo en vivo</a></strong> — acá podés ver la aplicación funcionando sin necesidad de instalar nada.
+</p>
+
+Watchvault es un tracker autoalojado para todo lo que ves. Buscá en TMDB y AniList, mirá el detalle completo antes de decidirte, agregalo con el estado correcto en un solo paso, y dejá que tu dashboard, tus estadísticas y las recomendaciones hagan el resto. Sin cuentas, sin feed social, sin ruido — solo tu biblioteca, pensada para ser rápida.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org)
@@ -15,128 +19,128 @@ Watchvault is a self-hosted tracker for everything you watch. Search TMDB and An
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 <!--
-  Add real screenshots/GIFs here once deployed — dashboard, search + detail
-  view, and the library grid are the three most visual surfaces.
+  Agregar screenshots/GIFs reales acá — el dashboard, la búsqueda con el
+  detalle abierto, y la grilla de biblioteca son las tres vistas más visuales.
   ![Dashboard](./docs/screenshots/dashboard.png)
 -->
 
 ---
 
-## ✨ Features
+## ✨ Funcionalidades
 
-### Discover without commitment
-- **Unified search** across **TMDB** (movies & series) and **AniList** (anime), grouped and filterable by type, with results streaming in as you type.
-- **Full detail preview before adding** — poster, synopsis, cast, genres, runtime, trailer, and where to stream it. You decide with real information, not just a thumbnail.
-- **Add with the right status in one click** — pick *Viendo*, *Completado*, *Por ver*, *En pausa*, *Abandonado* or *Reviendo* right from the search result or the detail dialog; it's saved exactly as you tell it, no edit-after-adding step.
-- **Duplicate detection** — titles already in your vault are clearly marked wherever they show up in search, so you never add the same thing twice.
-- **"Where to watch"** — streaming availability pulled straight from the provider data, shown right in the detail view.
+### Descubrí sin comprometerte
+- **Búsqueda unificada** en **TMDB** (películas y series) y **AniList** (anime), agrupada y filtrable por tipo, con resultados que aparecen mientras escribís.
+- **Vista de detalle completa antes de agregar** — poster, sinopsis, elenco, géneros, duración, tráiler y dónde verla. Decidís con información real, no solo con una miniatura.
+- **Agregá con el estado correcto en un clic** — elegí *Viendo*, *Completado*, *Por ver*, *En pausa*, *Abandonado* o *Reviendo* directamente desde el resultado de búsqueda o el diálogo de detalle; se guarda tal cual lo indicás, sin un paso extra de edición después.
+- **Detección de duplicados** — los títulos que ya están en tu vault se marcan claramente donde sea que aparezcan en la búsqueda, para que nunca agregues lo mismo dos veces.
+- **"Dónde ver"** — disponibilidad en plataformas de streaming, tomada directo de los proveedores y mostrada en la vista de detalle.
 
-### Stay on top of what you're watching
-- **Dashboard** with smart shelves (*Continúa viendo*, *Agregados recientemente*, *Favoritos*, *Por ver*) and at-a-glance stats (titles tracked, hours watched, average rating, favorites).
-- **Próximos episodios** — a live widget that fetches fresh episode data for everything you're actively watching and tells you what's airing today, tomorrow, or dropped in the last few days, so nothing slips by.
+### No perdás de vista lo que estás viendo
+- **Dashboard** con estanterías inteligentes (*Continúa viendo*, *Agregados recientemente*, *Favoritos*, *Por ver*) y estadísticas de un vistazo (títulos, horas vistas, calificación promedio, favoritos).
+- **Próximos episodios** — un widget en vivo que trae datos frescos de episodios para todo lo que estás siguiendo activamente y te dice qué sale hoy, mañana, o salió hace poco, para que no se te pase nada.
 
-### Organize your way
-- **Full library management** — status, personal rating, favorites, notes, tags, start/finish dates, watched episodes/seasons, rewatch count.
-- **Bulk actions** — multi-select entries to change status or remove several titles at once, with confirmation before anything destructive.
-- **Custom lists** to group titles however makes sense to you.
-- **Powerful filters and sorting** across the whole library.
-- **Import/export** your library as JSON — your data is always portable.
+### Organizalo a tu manera
+- **Gestión completa de biblioteca** — estado, calificación personal, favoritos, notas, etiquetas, fechas de inicio/fin, episodios/temporadas vistas, cantidad de rewatches.
+- **Acciones masivas** — seleccioná varias entradas a la vez para cambiar el estado o quitarlas, con confirmación antes de cualquier acción destructiva.
+- **Listas personalizadas** para agrupar títulos como quieras.
+- **Filtros y ordenamiento potentes** en toda la biblioteca.
+- **Importar/exportar** tu biblioteca como JSON — tus datos siempre son portables.
 
-### Understand your habits
-- **Stats page** with an activity heatmap and breakdowns by type, status, and rating.
-- **Recommendations** generated locally from your own taste — no external recommendation API, no data leaving your vault.
+### Entendé tus hábitos
+- **Página de estadísticas** con mapa de calor de actividad y desgloses por tipo, estado y calificación.
+- **Recomendaciones** generadas localmente en base a tu propio gusto — sin API externa de recomendaciones, sin que tus datos salgan de tu vault.
 
-### Built to feel native
-- **Command palette** (`⌘K` / `Ctrl+K`) to jump anywhere instantly.
-- **Dark / light theme**, fully responsive from phone to ultrawide — a proper mobile nav drawer, adaptive grids, and touch-friendly controls throughout.
+### Pensada para sentirse nativa
+- **Command palette** (`⌘K` / `Ctrl+K`) para ir a cualquier lado al instante.
+- **Tema claro/oscuro**, totalmente responsive de celular a pantalla ultrawide — con un drawer de navegación mobile de verdad, grillas adaptables y controles pensados para tocar con el dedo.
 
-### Yours, and shareable on your terms
-- **Optional password gate** — lock your real library behind a login with one env var; unset by default.
-- **Read-only public demo mode** — run a second deployment seeded with sample data so people can try the app without ever touching your real library or credentials.
+### Tuya, y compartible en tus términos
+- **Contraseña opcional** — protegé tu biblioteca real detrás de un login con una sola variable de entorno; desactivada por defecto.
+- **Modo demo público de solo lectura** — corré un segundo deploy con datos de ejemplo para que la gente pruebe la app sin tocar nunca tu biblioteca real ni tus credenciales. [Mirá la demo acá](https://watchvault-demo.vercel.app).
 
 ---
 
-## 🧱 Tech stack
+## 🧱 Stack tecnológico
 
-| Layer | Choice |
+| Capa | Elección |
 |---|---|
 | Framework | [Next.js 15](https://nextjs.org) — App Router, TypeScript, Turbopack |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (built on [Base UI](https://base-ui.com)) |
-| Server state | [TanStack Query](https://tanstack.com/query) |
-| Client state | [Zustand](https://zustand-demo.pmnd.rs) |
-| Forms & validation | [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) |
+| Estilos | [Tailwind CSS v4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (sobre [Base UI](https://base-ui.com)) |
+| Estado del servidor | [TanStack Query](https://tanstack.com/query) |
+| Estado del cliente | [Zustand](https://zustand-demo.pmnd.rs) |
+| Formularios y validación | [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) |
 | HTTP | [Axios](https://axios-http.com) |
-| Motion | [Framer Motion](https://www.framer.com/motion) |
-| Metadata providers | [TMDB](https://www.themoviedb.org/documentation/api) (movies/series) · [AniList](https://anilist.gitbook.io/anilist-apiv2-docs/) (anime, GraphQL) |
-| Persistence | [Vercel Blob](https://vercel.com/docs/vercel-blob) in production · local JSON file in development |
+| Animaciones | [Framer Motion](https://www.framer.com/motion) |
+| Proveedores de metadata | [TMDB](https://www.themoviedb.org/documentation/api) (películas/series) · [AniList](https://anilist.gitbook.io/anilist-apiv2-docs/) (anime, GraphQL) |
+| Persistencia | [Vercel Blob](https://vercel.com/docs/vercel-blob) en producción · archivo JSON local en desarrollo |
 
-## 🏗️ Architecture
+## 🏗️ Arquitectura
 
-Watchvault is built around a few deliberate boundaries so it stays easy to extend:
+Watchvault está construida sobre unos pocos límites deliberados para que sea fácil de extender:
 
 ```
 src/
-  app/                  Next.js App Router routes, layout, and providers
-  components/ui/        shadcn/ui generated primitives
-  components/shared/    Reusable components shared across features
-  components/layout/    App shell (nav, header, mobile drawer)
-  features/             One folder per feature area (library, search,
+  app/                  Rutas, layout y providers del App Router de Next.js
+  components/ui/        Primitivas generadas por shadcn/ui
+  components/shared/    Componentes reutilizables entre features
+  components/layout/    App shell (nav, header, drawer mobile)
+  features/             Una carpeta por área de funcionalidad (library, search,
                          dashboard, stats, lists, profile, recommendations)
-  server/providers/     TMDB / AniList adapters behind a common
-                         `MetadataProvider` interface — adding a new
-                         source means implementing one interface
-  server/repositories/  Persistence behind a `LibraryRepository`
-                         interface — swappable storage backend with
-                         zero changes to the rest of the app
-  lib/                  Cross-cutting utilities (API client, query client)
-  hooks/                Shared React hooks
-  stores/               Zustand stores
-  types/                Domain types — the anti-corruption boundary that
-                         normalizes TMDB/AniList data into one shape
-  config/               Server-only configuration (env validation)
+  server/providers/     Adaptadores de TMDB / AniList detrás de una interfaz
+                         común `MetadataProvider` — agregar una fuente nueva
+                         es implementar una interfaz
+  server/repositories/  Persistencia detrás de una interfaz
+                         `LibraryRepository` — backend de storage
+                         intercambiable sin tocar el resto de la app
+  lib/                  Utilidades transversales (cliente API, query client)
+  hooks/                Hooks de React compartidos
+  stores/               Stores de Zustand
+  types/                Tipos de dominio — el límite anti-corrupción que
+                         normaliza los datos de TMDB/AniList a una sola forma
+  config/                Configuración solo de servidor (validación de env)
 ```
 
-- **Provider abstraction**: every external metadata source implements the same `MetadataProvider` interface, so search results and details always come back in one normalized shape regardless of where they came from.
-- **Repository abstraction**: the library is read/written through a `LibraryRepository` interface. Locally that's a flat JSON file; in production it's Vercel Blob with optimistic-concurrency writes. Swapping to a relational database later touches this one boundary, nothing else.
+- **Abstracción de proveedores**: cada fuente externa de metadata implementa la misma interfaz `MetadataProvider`, así que los resultados de búsqueda y detalle siempre vuelven con la misma forma normalizada, sin importar de dónde vengan.
+- **Abstracción de repositorio**: la biblioteca se lee/escribe a través de una interfaz `LibraryRepository`. En local es un archivo JSON plano; en producción es Vercel Blob con escrituras de concurrencia optimista. Migrar a una base relacional más adelante toca solo ese límite, nada más.
 
 ---
 
-## 🚀 Getting started
+## 🚀 Cómo empezar
 
-This project uses **pnpm**.
+Este proyecto usa **pnpm**.
 
 ```bash
 pnpm install
-cp .env.example .env.local   # then fill in TMDB_API_KEY
+cp .env.example .env.local   # después completá TMDB_API_KEY
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Abrí [http://localhost:3000](http://localhost:3000).
 
-### Environment variables
+### Variables de entorno
 
-| Variable | Required | Where | Purpose |
+| Variable | Requerida | Dónde | Para qué sirve |
 |---|---|---|---|
-| `TMDB_API_KEY` | Yes | Local + Production | Powers movie/series search and details via TMDB. [Get a free key](https://www.themoviedb.org/settings/api). |
-| `BLOB_READ_WRITE_TOKEN` | Production only | Vercel (auto-injected) | Lets the app read/write your library to Vercel Blob. Not needed locally — dev falls back to a local JSON file automatically. |
-| `TMDB_API_BASE_URL` | No | — | Overrides the TMDB API base URL. Defaults to the official endpoint. |
-| `ANILIST_GRAPHQL_URL` | No | — | Overrides the AniList GraphQL endpoint. Defaults to the official endpoint. |
-| `SITE_PASSWORD` | No | Production (optional) | Locks the whole app behind a login page when set. Unset by default — no auth, matching local dev. |
-| `NEXT_PUBLIC_DEMO_MODE` | No | Public demo deployment only | Set to `true` to serve read-only seed data instead of your real library — see [`DEPLOYMENT.md`](./DEPLOYMENT.md). |
+| `TMDB_API_KEY` | Sí | Local + Producción | Habilita la búsqueda y el detalle de películas/series vía TMDB. [Conseguí una key gratis](https://www.themoviedb.org/settings/api). |
+| `BLOB_READ_WRITE_TOKEN` | Solo producción | Vercel (se inyecta sola) | Permite que la app lea/escriba tu biblioteca en Vercel Blob. No hace falta en local — el desarrollo cae automáticamente a un archivo JSON local. |
+| `TMDB_API_BASE_URL` | No | — | Sobrescribe la URL base de la API de TMDB. Por defecto usa el endpoint oficial. |
+| `ANILIST_GRAPHQL_URL` | No | — | Sobrescribe el endpoint GraphQL de AniList. Por defecto usa el endpoint oficial. |
+| `SITE_PASSWORD` | No | Producción (opcional) | Bloquea toda la app detrás de un login cuando está configurada. Desactivada por defecto — sin auth, igual que en local. |
+| `NEXT_PUBLIC_DEMO_MODE` | No | Solo en el deploy de la demo pública | Poné `true` para servir datos de muestra de solo lectura en vez de tu biblioteca real — ver [`DEPLOYMENT.md`](./DEPLOYMENT.md). |
 
-Anime search via AniList needs no API key.
+La búsqueda de anime vía AniList no necesita ninguna API key.
 
 ## 📜 Scripts
 
-- `pnpm dev` — start the development server (Turbopack)
-- `pnpm build` — production build
-- `pnpm start` — run a production build locally
-- `pnpm lint` — run ESLint
+- `pnpm dev` — inicia el servidor de desarrollo (Turbopack)
+- `pnpm build` — build de producción
+- `pnpm start` — corre un build de producción en local
+- `pnpm lint` — corre ESLint
 
-## ☁️ Deploying
+## ☁️ Deploy
 
-Watchvault is built to deploy straight to [Vercel](https://vercel.com). See [`DEPLOYMENT.md`](./DEPLOYMENT.md) for the full step-by-step: pushing to GitHub, creating the Vercel Blob store, setting environment variables, and going live.
+Watchvault está pensada para desplegarse directo en [Vercel](https://vercel.com). Mirá [`DEPLOYMENT.md`](./DEPLOYMENT.md) para el paso a paso completo: subir a GitHub, crear el store de Vercel Blob, configurar las variables de entorno, proteger tu app real con contraseña, crear un deploy de demo pública, y salir a producción.
 
-## 📄 License
+## 📄 Licencia
 
-[MIT](./LICENSE) — do what you want with it.
+[MIT](./LICENSE) — hacé lo que quieras con esto.
