@@ -50,6 +50,10 @@ Watchvault is a self-hosted tracker for everything you watch. Search TMDB and An
 - **Command palette** (`⌘K` / `Ctrl+K`) to jump anywhere instantly.
 - **Dark / light theme**, fully responsive from phone to ultrawide — a proper mobile nav drawer, adaptive grids, and touch-friendly controls throughout.
 
+### Yours, and shareable on your terms
+- **Optional password gate** — lock your real library behind a login with one env var; unset by default.
+- **Read-only public demo mode** — run a second deployment seeded with sample data so people can try the app without ever touching your real library or credentials.
+
 ---
 
 ## 🧱 Tech stack
@@ -117,6 +121,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | `BLOB_READ_WRITE_TOKEN` | Production only | Vercel (auto-injected) | Lets the app read/write your library to Vercel Blob. Not needed locally — dev falls back to a local JSON file automatically. |
 | `TMDB_API_BASE_URL` | No | — | Overrides the TMDB API base URL. Defaults to the official endpoint. |
 | `ANILIST_GRAPHQL_URL` | No | — | Overrides the AniList GraphQL endpoint. Defaults to the official endpoint. |
+| `SITE_PASSWORD` | No | Production (optional) | Locks the whole app behind a login page when set. Unset by default — no auth, matching local dev. |
+| `NEXT_PUBLIC_DEMO_MODE` | No | Public demo deployment only | Set to `true` to serve read-only seed data instead of your real library — see [`DEPLOYMENT.md`](./DEPLOYMENT.md). |
 
 Anime search via AniList needs no API key.
 
