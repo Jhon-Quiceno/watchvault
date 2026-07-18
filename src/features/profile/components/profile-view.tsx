@@ -140,37 +140,39 @@ export function ProfileView() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Respaldo</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-2">
-          <Button variant="outline" className="gap-1.5" disabled={busy} onClick={exportLibrary}>
-            <Download className="size-4" />
-            Exportar biblioteca
-          </Button>
-          <Button
-            variant="outline"
-            className="gap-1.5"
-            disabled={busy}
-            onClick={() => fileInput.current?.click()}
-          >
-            <Upload className="size-4" />
-            Importar biblioteca
-          </Button>
-          <input
-            ref={fileInput}
-            type="file"
-            accept="application/json"
-            className="hidden"
-            onChange={(event) => {
-              const file = event.target.files?.[0];
-              if (file) void importLibrary(file);
-              event.target.value = "";
-            }}
-          />
-        </CardContent>
-      </Card>
+      {process.env.NEXT_PUBLIC_DEMO_MODE !== "true" && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Respaldo</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-2">
+            <Button variant="outline" className="gap-1.5" disabled={busy} onClick={exportLibrary}>
+              <Download className="size-4" />
+              Exportar biblioteca
+            </Button>
+            <Button
+              variant="outline"
+              className="gap-1.5"
+              disabled={busy}
+              onClick={() => fileInput.current?.click()}
+            >
+              <Upload className="size-4" />
+              Importar biblioteca
+            </Button>
+            <input
+              ref={fileInput}
+              type="file"
+              accept="application/json"
+              className="hidden"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                if (file) void importLibrary(file);
+                event.target.value = "";
+              }}
+            />
+          </CardContent>
+        </Card>
+      )}
 
       <Card>
         <CardHeader>
