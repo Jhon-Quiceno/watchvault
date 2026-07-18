@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
-import { Download, LogOut, Save, Upload } from "lucide-react";
+import { Download, FileText, ListPlus, LogOut, Save, Upload } from "lucide-react";
 import { toast } from "sonner";
 
 import type { CustomList, LibraryEntry } from "@/types/media";
@@ -11,6 +11,8 @@ import { apiClient } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
 import { useProfile } from "@/stores/profile-store";
 import { useLibrary } from "@/features/library/hooks/use-library";
+import { buildNameExport } from "@/features/profile/lib/parse-names";
+import { ImportNamesDialog } from "@/features/profile/components/import-names-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +36,7 @@ export function ProfileView() {
   const [name, setName] = useState(profile.name);
   const [bio, setBio] = useState(profile.bio);
   const [busy, setBusy] = useState(false);
+  const [importNamesOpen, setImportNamesOpen] = useState(false);
 
   async function logout() {
     await apiClient.post("/auth/logout");
@@ -94,6 +97,17 @@ export function ProfileView() {
     } finally {
       setBusy(false);
     }
+  }
+
+  function exportNamesList() {
+    const text = buildNameExport(entries);
+    const blob = new Blob([text], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `watchvault-nombres-${new Date().toISOString().slice(0, 10)}.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
   }
 
   const initials =
@@ -159,6 +173,23 @@ export function ProfileView() {
               <Upload className="size-4" />
               Importar biblioteca
             </Button>
+            <Button
+              variant="outline"
+              className="gap-1.5"
+              disabled={entries.length === 0}
+              onClick={exportNamesList}
+            >
+              <FileText className="size-4" />
+              Exportar como lista
+            </Button>
+            <Button
+              variant="outline"
+              className="gap-1.5"
+              onClick={() => setImportNamesOpen(true)}
+            >
+              <ListPlus className="size-4" />
+              Importar por nombres
+            </Button>
             <input
               ref={fileInput}
               type="file"
@@ -172,6 +203,10 @@ export function ProfileView() {
             />
           </CardContent>
         </Card>
+      )}
+
+      {process.env.NEXT_PUBLIC_DEMO_MODE !== "true" && (
+        <ImportNamesDialog open={importNamesOpen} onOpenChange={setImportNamesOpen} />
       )}
 
       <Card>

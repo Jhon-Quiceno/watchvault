@@ -6,7 +6,7 @@ import type { MediaSearchResult, MediaType } from "@/types/media";
 import { apiClient } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
 
-async function fetchSearch(
+export async function fetchSearch(
   query: string,
   type: MediaType | "all",
 ): Promise<MediaSearchResult[]> {

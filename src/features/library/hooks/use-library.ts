@@ -30,15 +30,19 @@ export function useLibrary() {
 export function useAddToLibrary() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (input: AddToLibraryInput) => {
+    // `silent` is destructured out here so it never leaks into the POST body sent to the API.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    mutationFn: async ({ silent, ...input }: AddToLibraryInput & { silent?: boolean }) => {
       const { data } = await apiClient.post<{ entry: LibraryEntry }>("/library", input);
       return data.entry;
     },
-    onSuccess: (entry) => {
+    onSuccess: (entry, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.library.all });
-      toast.success(`“${entry.media.title}” agregado a tu vault`);
+      if (!variables.silent) toast.success(`“${entry.media.title}” agregado a tu vault`);
     },
-    onError: (error) => showMutationError(error, "No se pudo agregar este título"),
+    onError: (error, variables) => {
+      if (!variables.silent) showMutationError(error, "No se pudo agregar este título");
+    },
   });
 }
 
