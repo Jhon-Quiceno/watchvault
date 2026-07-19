@@ -60,7 +60,11 @@ export function RecommendationsView() {
                 <p className="truncate text-sm font-medium" title={rec.title}>
                   {rec.title}
                 </p>
-                <Badge variant="secondary" className="mt-1 text-[0.7rem]">
+                <Badge
+                  variant="secondary"
+                  className="mt-1 max-w-full truncate text-[0.7rem]"
+                  title={rec.reason}
+                >
                   {rec.reason}
                 </Badge>
               </div>
