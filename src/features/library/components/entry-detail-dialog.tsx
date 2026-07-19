@@ -30,6 +30,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const STATUS_OPTIONS: SelectOption[] = WATCH_STATUSES.map((status) => ({
   value: status,
@@ -259,16 +260,23 @@ function EntryEditForm({
           control={control}
           name="favorite"
           render={({ field }) => (
-            <Button
-              type="button"
-              variant={field.value ? "default" : "outline"}
-              size="sm"
-              className="gap-1.5"
-              onClick={() => field.onChange(!field.value)}
-            >
-              <Heart className={cn("size-4", field.value && "fill-current")} />
-              {field.value ? "Favorito" : "Marcar como favorito"}
-            </Button>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    type="button"
+                    variant={field.value ? "default" : "outline"}
+                    size="icon"
+                    onClick={() => field.onChange(!field.value)}
+                  />
+                }
+              >
+                <Heart className={cn("size-4", field.value && "fill-current")} />
+              </TooltipTrigger>
+              <TooltipContent>
+                {field.value ? "Agregado a favoritos" : "Agregar a favoritos"}
+              </TooltipContent>
+            </Tooltip>
           )}
         />
       </div>
