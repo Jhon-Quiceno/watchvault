@@ -1772,7 +1772,7 @@
           }
         ]
       },
-      "status": "dropped",
+      "status": "on_hold",
       "personalRating": 6,
       "favorite": false,
       "notes": "No me convenció cómo cerró la historia.",

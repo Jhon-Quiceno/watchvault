@@ -14,13 +14,8 @@ function preferenceWeights(entries: LibraryEntry[]) {
   const directorWeight = new Map<string, number>();
 
   for (const entry of entries) {
-    // Entries the user rated highly or marked favorite count more; entries
-    // they dropped push the opposite direction so recommendations don't
-    // repeat what didn't work.
-    const weight =
-      (entry.favorite ? 2 : 0) +
-      (entry.personalRating ?? 5) / 5 -
-      (entry.status === "dropped" ? 3 : 0);
+    // Entries the user rated highly or marked favorite count more.
+    const weight = (entry.favorite ? 2 : 0) + (entry.personalRating ?? 5) / 5;
 
     for (const genre of entry.media.genres) {
       genreWeight.set(genre, (genreWeight.get(genre) ?? 0) + weight);

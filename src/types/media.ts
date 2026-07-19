@@ -9,13 +9,7 @@
 
 export type MediaType = "movie" | "series" | "anime";
 
-export type WatchStatus =
-  | "watching"
-  | "completed"
-  | "plan_to_watch"
-  | "on_hold"
-  | "dropped"
-  | "rewatching";
+export type WatchStatus = "watching" | "completed" | "plan_to_watch" | "on_hold";
 
 /**
  * Extensible union of supported metadata providers. Add new provider ids

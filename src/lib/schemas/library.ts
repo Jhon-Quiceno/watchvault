@@ -12,8 +12,6 @@ export const watchStatusSchema = z.enum([
   "completed",
   "plan_to_watch",
   "on_hold",
-  "dropped",
-  "rewatching",
 ]);
 
 /** The client adds a title by reference; the server fetches the snapshot. */

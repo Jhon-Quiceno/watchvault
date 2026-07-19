@@ -192,7 +192,7 @@ function buildShelves(entries: LibraryEntry[]): Shelf[] {
     {
       id: "continue",
       title: "Continúa viendo",
-      entries: byUpdated.filter((e) => e.status === "watching" || e.status === "rewatching"),
+      entries: byUpdated.filter((e) => e.status === "watching"),
     },
     { id: "recent", title: "Agregados recientemente", entries: byAdded.slice(0, 12) },
     { id: "favorites", title: "Favoritos", entries: byUpdated.filter((e) => e.favorite) },
@@ -200,6 +200,16 @@ function buildShelves(entries: LibraryEntry[]): Shelf[] {
       id: "plan",
       title: "Por ver",
       entries: byUpdated.filter((e) => e.status === "plan_to_watch"),
+    },
+    {
+      id: "on_hold",
+      title: "En pausa",
+      entries: byUpdated.filter((e) => e.status === "on_hold"),
+    },
+    {
+      id: "completed",
+      title: "Completados",
+      entries: byUpdated.filter((e) => e.status === "completed"),
     },
   ];
 }

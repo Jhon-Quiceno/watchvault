@@ -39,8 +39,6 @@ export const WATCH_STATUS_LABELS: Record<WatchStatus, string> = {
   completed: "Completado",
   plan_to_watch: "Por ver",
   on_hold: "En pausa",
-  dropped: "Abandonado",
-  rewatching: "Reviendo",
 };
 
 export const WATCH_STATUSES: WatchStatus[] = [
@@ -48,8 +46,6 @@ export const WATCH_STATUSES: WatchStatus[] = [
   "completed",
   "plan_to_watch",
   "on_hold",
-  "dropped",
-  "rewatching",
 ];
 
 export const MEDIA_TYPES: MediaType[] = ["movie", "series", "anime"];

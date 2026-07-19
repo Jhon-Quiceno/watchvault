@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-import type { CustomList, LibraryEntry } from "@/types/media";
+import type { CustomList, LibraryEntry, WatchStatus } from "@/types/media";
 import type {
   AddToLibraryInput,
   ListInput,
@@ -20,13 +20,30 @@ function now(): string {
   return new Date().toISOString();
 }
 
-export async function listEntries(): Promise<LibraryEntry[]> {
-  const entries = await getLibraryRepository().getAllEntries();
-  return [...entries].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+// The 6-status model shipped before this app had real users. Entries persisted
+// under "dropped"/"rewatching" may still sit in the live store (JSON file or
+// Vercel Blob); map them onto their closest surviving status on every read so
+// the rest of the app never has to know the old values existed.
+const LEGACY_STATUS_MAP: Record<string, WatchStatus> = {
+  dropped: "on_hold",
+  rewatching: "watching",
+};
+
+function normalizeStatus(entry: LibraryEntry): LibraryEntry {
+  const mapped = LEGACY_STATUS_MAP[entry.status];
+  return mapped ? { ...entry, status: mapped } : entry;
 }
 
-export function getEntry(id: string): Promise<LibraryEntry | null> {
-  return getLibraryRepository().getEntryById(id);
+export async function listEntries(): Promise<LibraryEntry[]> {
+  const entries = await getLibraryRepository().getAllEntries();
+  return [...entries]
+    .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+    .map(normalizeStatus);
+}
+
+export async function getEntry(id: string): Promise<LibraryEntry | null> {
+  const entry = await getLibraryRepository().getEntryById(id);
+  return entry ? normalizeStatus(entry) : null;
 }
 
 export async function addEntry(input: AddToLibraryInput): Promise<LibraryEntry> {
@@ -62,10 +79,14 @@ export async function addEntry(input: AddToLibraryInput): Promise<LibraryEntry> 
 
 export async function updateEntry(id: string, patch: UpdateEntryInput): Promise<LibraryEntry> {
   const repo = getLibraryRepository();
-  const current = await repo.getEntryById(id);
-  if (!current) {
+  const found = await repo.getEntryById(id);
+  if (!found) {
     throw new EntryNotFoundError(id);
   }
+  // Normalize before merging so an edit that doesn't touch `status` can't
+  // write a legacy value back to storage (and return it straight to the
+  // client) via the `...current` spread below.
+  const current = normalizeStatus(found);
   const updated: LibraryEntry = {
     ...current,
     ...patch,
