@@ -90,6 +90,7 @@ export interface EpisodeInfo {
   episodeNumber: number;
   name: string;
   airDate: string | null;
+  thumbnailUrl?: string | null;
 }
 
 export interface LibraryEntryProgress {

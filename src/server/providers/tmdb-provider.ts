@@ -22,6 +22,7 @@ const POSTER_SIZE = "w500";
 const BACKDROP_SIZE = "w1280";
 const PROFILE_SIZE = "w185";
 const LOGO_SIZE = "w92";
+const STILL_SIZE = "w300";
 /** TMDB media_type values Watchvault understands (people are ignored). */
 const TMDB_TO_MEDIA_TYPE: Record<string, MediaType> = { movie: "movie", tv: "series" };
 const MEDIA_TYPE_TO_TMDB: Record<"movie" | "series", "movie" | "tv"> = {
@@ -169,6 +170,7 @@ export class TmdbProvider implements MetadataProvider {
       episodeNumber: episode.episode_number,
       name: episode.name,
       airDate: episode.air_date ?? null,
+      thumbnailUrl: imageUrl(episode.still_path ?? null, STILL_SIZE),
     }));
   }
 }
@@ -179,6 +181,7 @@ interface TmdbSeasonResponse {
     episode_number: number;
     name: string;
     air_date: string | null;
+    still_path: string | null;
   }[];
 }
 

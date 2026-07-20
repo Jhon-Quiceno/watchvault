@@ -38,7 +38,7 @@ interface AniListMedia {
   recommendations: {
     nodes: { mediaRecommendation: Pick<AniListMedia, "id" | "title" | "coverImage"> | null }[];
   } | null;
-  streamingEpisodes: { title: string | null }[] | null;
+  streamingEpisodes: { title: string | null; thumbnail: string | null }[] | null;
 }
 
 const MEDIA_FIELDS = `
@@ -64,7 +64,7 @@ const DETAIL_FIELDS = `
   recommendations(sort: RATING_DESC, perPage: 12) {
     nodes { mediaRecommendation { id title { romaji english } coverImage { large } } }
   }
-  streamingEpisodes { title }
+  streamingEpisodes { title thumbnail }
 `;
 
 const SEARCH_QUERY = `
@@ -123,15 +123,49 @@ function mapCast(characters: AniListMedia["characters"]): CastMember[] {
   }));
 }
 
+/**
+ * AniList's `streamingEpisodes` is NOT indexed by episode number: for
+ * long-running/ongoing anime it only returns a recent window (e.g. ~100 of
+ * 1000+ episodes) in descending order, starting from whatever it last
+ * ingested rather than episode 1. Array index cannot be trusted as episode
+ * number - the real number has to be parsed out of the title itself, which
+ * AniList formats consistently as "Episode <n> - <title>".
+ */
+const STREAMING_EPISODE_TITLE = /^Episode\s+(\d+)\s*[-:]\s*(.+)$/i;
+
+function resolveTotalEpisodes(media: AniListMedia, maxParsed: number): number {
+  if (media.episodes != null) return media.episodes;
+  if (media.nextAiringEpisode) return Math.max(media.nextAiringEpisode.episode - 1, 0);
+  return maxParsed;
+}
+
 function mapEpisodes(media: AniListMedia): EpisodeInfo[] {
   const streaming = media.streamingEpisodes ?? [];
-  const total = media.episodes ?? streaming.length;
+  const byNumber = new Map<number, { title: string; thumbnail: string | null }>();
+  let maxParsed = 0;
+
+  for (const entry of streaming) {
+    const match = entry.title?.match(STREAMING_EPISODE_TITLE);
+    const rawNumber = match?.[1];
+    const rawTitle = match?.[2];
+    if (!rawNumber || !rawTitle) continue;
+    const episodeNumber = Number.parseInt(rawNumber, 10);
+    const cleanTitle = rawTitle.trim();
+    if (!Number.isFinite(episodeNumber) || episodeNumber <= 0) continue;
+    byNumber.set(episodeNumber, { title: cleanTitle, thumbnail: entry.thumbnail ?? null });
+    maxParsed = Math.max(maxParsed, episodeNumber);
+  }
+
+  const total = resolveTotalEpisodes(media, maxParsed);
+
   return Array.from({ length: total }, (_, index) => {
     const episodeNumber = index + 1;
+    const known = byNumber.get(episodeNumber);
     return {
       episodeNumber,
-      name: streaming[index]?.title ?? `Episodio ${episodeNumber}`,
+      name: known?.title ?? `Episodio ${episodeNumber}`,
       airDate: null,
+      thumbnailUrl: known?.thumbnail ?? null,
     };
   });
 }

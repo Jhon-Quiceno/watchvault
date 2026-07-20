@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Heart, Play, Trash2, X } from "lucide-react";
+import { ChevronDown, Heart, Play, Trash2, X } from "lucide-react";
 
 import type { EpisodeInfo, LibraryEntry } from "@/types/media";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,8 @@ import { entryProgressSchema, watchStatusSchema } from "@/lib/schemas/library";
 import { useRemoveEntry, useUpdateEntry } from "@/features/library/hooks/use-library";
 import { useSeasonEpisodes } from "@/features/library/hooks/use-season-episodes";
 import {
+  checkThroughEpisode,
+  episodeKey,
   isSeasonComplete,
   toggleEpisodeKey,
   toggleSeasonCompletion,
@@ -229,9 +231,7 @@ function EntryEditForm({
   onDelete: () => void;
 }) {
   const [legacyBaseline, setLegacyBaseline] = useState(() => computeLegacyBaseline(entry));
-  const [selectedSeason, setSelectedSeason] = useState<number | null>(
-    entry.media.seasonCount ? 1 : null,
-  );
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
 
   const { control, register, handleSubmit, reset, getValues, setValue } =
     useForm<EntryFormValues>({
@@ -264,18 +264,19 @@ function EntryEditForm({
       },
     });
     setLegacyBaseline(computeLegacyBaseline(entry));
-    setSelectedSeason(entry.media.seasonCount ? 1 : null);
+    setSelectedSeason(null);
   }, [entry, reset]);
 
   const watchedEpisodeKeys = useWatch({ control, name: "progress.watchedEpisodeKeys" }) ?? [];
   const completedSeasons = useWatch({ control, name: "progress.completedSeasons" }) ?? [];
 
   function toggleEpisode(seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) {
-    const nextKeys = toggleEpisodeKey(
-      getValues("progress.watchedEpisodeKeys"),
-      seasonNumber,
-      episodeNumber,
-    );
+    const currentKeys = getValues("progress.watchedEpisodeKeys");
+    const currentlyWatched = currentKeys.includes(episodeKey(seasonNumber, episodeNumber));
+    // Checking an episode fans out to fill earlier gaps in the season; unchecking only removes itself.
+    const nextKeys = currentlyWatched
+      ? toggleEpisodeKey(currentKeys, seasonNumber, episodeNumber)
+      : checkThroughEpisode(currentKeys, seasonNumber, episodeNumber);
     const complete = isSeasonComplete(nextKeys, seasonNumber, seasonEpisodeCount);
     const nextCompleted = toggleSeasonCompletion(
       getValues("progress.completedSeasons"),
@@ -377,33 +378,45 @@ function EntryEditForm({
             <span>
               Episodios vistos: <strong>{legacyBaseline + watchedEpisodeKeys.length}</strong>
             </span>
-            <span>
-              Temporadas vistas: <strong>{completedSeasons.length}</strong>
-            </span>
+            {entry.media.type === "series" && (
+              <span>
+                Temporadas vistas: <strong>{completedSeasons.length}</strong>
+              </span>
+            )}
           </div>
 
-          {entry.media.type === "series" && seasonOptions.length > 0 && selectedSeason != null && (
+          {entry.media.type === "series" && seasonOptions.length > 0 && (
             <>
               <SimpleSelect
-                value={String(selectedSeason)}
+                value={selectedSeason != null ? String(selectedSeason) : ""}
                 onValueChange={(value) => setSelectedSeason(Number(value))}
                 options={seasonOptions}
+                placeholder="Elegí una temporada"
                 className="w-full"
               />
-              <EpisodeChecklist
-                episodes={seasonEpisodesQuery.data ?? []}
-                seasonNumber={selectedSeason}
-                watchedKeys={watchedEpisodeKeys}
-                onToggle={toggleEpisode}
-                loading={seasonEpisodesQuery.isLoading}
-              />
+              {selectedSeason != null && (
+                <>
+                  <EpisodeProgressBar
+                    watched={watchedEpisodeKeys.filter((key) =>
+                      key.startsWith(`${selectedSeason}:`),
+                    ).length}
+                    total={seasonEpisodesQuery.data?.length ?? 0}
+                  />
+                  <EpisodeChecklist
+                    episodes={seasonEpisodesQuery.data ?? []}
+                    seasonNumber={selectedSeason}
+                    watchedKeys={watchedEpisodeKeys}
+                    onToggle={toggleEpisode}
+                    loading={seasonEpisodesQuery.isLoading}
+                  />
+                </>
+              )}
             </>
           )}
 
           {entry.media.type === "anime" && (
-            <EpisodeChecklist
+            <AnimeEpisodesSection
               episodes={entry.media.episodes ?? []}
-              seasonNumber={1}
               watchedKeys={watchedEpisodeKeys}
               onToggle={toggleEpisode}
             />
@@ -436,6 +449,61 @@ function EntryEditForm({
   );
 }
 
+function EpisodeProgressBar({ watched, total }: { watched: number; total: number }) {
+  const pct = total > 0 ? Math.min(100, Math.round((watched / total) * 100)) : 0;
+  return (
+    <div className="flex flex-col gap-1.5 px-0.5">
+      <div className="text-muted-foreground flex items-center justify-between text-xs">
+        <span>
+          {watched} / {total} episodios
+        </span>
+        <span className="tabular-nums">{pct}%</span>
+      </div>
+      <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
+        <div
+          className="bg-gradient-brand h-full rounded-full transition-all"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function AnimeEpisodesSection({
+  episodes,
+  watchedKeys,
+  onToggle,
+}: {
+  episodes: EpisodeInfo[];
+  watchedKeys: string[];
+  onToggle: (seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const watched = watchedKeys.filter((key) => key.startsWith("1:")).length;
+
+  return (
+    <div className="flex flex-col gap-3">
+      <EpisodeProgressBar watched={watched} total={episodes.length} />
+      <button
+        type="button"
+        onClick={() => setExpanded((value) => !value)}
+        className="border-border/60 hover:bg-muted/40 flex items-center justify-between rounded-lg border px-3 py-2 text-sm font-medium transition-colors"
+      >
+        <span>{expanded ? "Ocultar episodios" : "Ver episodios"}</span>
+        <ChevronDown className={cn("size-4 transition-transform", expanded && "rotate-180")} />
+      </button>
+      {expanded && (
+        <EpisodeChecklist
+          episodes={episodes}
+          seasonNumber={1}
+          watchedKeys={watchedKeys}
+          onToggle={onToggle}
+        />
+      )}
+    </div>
+  );
+}
+
 function EpisodeChecklist({
   episodes,
   seasonNumber,
@@ -456,20 +524,40 @@ function EpisodeChecklist({
     return <p className="text-muted-foreground px-1 text-xs">No hay episodios disponibles.</p>;
   }
   return (
-    <ScrollArea className="border-border/60 h-48 rounded-lg border">
+    <ScrollArea className="border-border/60 h-64 rounded-lg border">
       <div className="divide-border/60 flex flex-col divide-y">
         {episodes.map((episode) => {
-          const key = `${seasonNumber}:${episode.episodeNumber}`;
+          const key = episodeKey(seasonNumber, episode.episodeNumber);
           const checked = watchedKeys.includes(key);
           return (
-            <label key={key} className="flex items-center gap-2 px-3 py-2 text-sm">
+            <label
+              key={key}
+              className={cn(
+                "hover:bg-muted/40 flex items-center gap-3 px-3 py-2 text-sm transition-colors",
+                checked && "bg-muted/30",
+              )}
+            >
+              <div className="bg-muted border-border/60 relative size-12 shrink-0 overflow-hidden rounded-lg border">
+                <PosterImage src={episode.thumbnailUrl ?? null} alt={episode.name} sizes="48px" />
+              </div>
+              <div className="flex min-w-0 flex-1 items-center gap-2">
+                <Badge variant="outline" className="shrink-0 tabular-nums">
+                  {episode.episodeNumber}
+                </Badge>
+                <span
+                  className={cn(
+                    "truncate",
+                    checked && "text-muted-foreground line-through decoration-muted-foreground/50",
+                  )}
+                >
+                  {episode.name}
+                </span>
+              </div>
               <Checkbox
                 checked={checked}
                 onCheckedChange={() => onToggle(seasonNumber, episode.episodeNumber, episodes.length)}
+                className="shrink-0"
               />
-              <span className="flex-1 truncate">
-                Episodio {episode.episodeNumber}: {episode.name}
-              </span>
             </label>
           );
         })}

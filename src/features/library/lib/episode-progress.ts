@@ -12,6 +12,23 @@ export function toggleEpisodeKey(
   return keys.includes(key) ? keys.filter((existing) => existing !== key) : [...keys, key];
 }
 
+/**
+ * Checking episode N implies episodes 1..N-1 were already watched, so
+ * checking it fans out to fill in any earlier gaps in the same season.
+ * Unchecking is intentionally NOT symmetric - it only removes the single
+ * key the user clicked, leaving earlier episodes marked as watched.
+ */
+export function checkThroughEpisode(
+  keys: string[],
+  seasonNumber: number,
+  episodeNumber: number,
+): string[] {
+  const missing = Array.from({ length: episodeNumber }, (_, index) =>
+    episodeKey(seasonNumber, index + 1),
+  ).filter((key) => !keys.includes(key));
+  return missing.length === 0 ? keys : [...keys, ...missing];
+}
+
 export function isSeasonComplete(
   keys: string[],
   seasonNumber: number,
