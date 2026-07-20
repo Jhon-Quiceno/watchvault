@@ -8,6 +8,7 @@ import type {
   MediaSearchResult,
   MediaType,
   NextEpisode,
+  RelatedMedia,
   SimilarMediaSummary,
   WatchProvider,
 } from "@/types/media";
@@ -142,7 +143,7 @@ export class TmdbProvider implements MetadataProvider {
       type,
     );
 
-    return {
+    const details: MediaDetails = {
       ...base,
       genres: (data.genres ?? []).map((g) => g.name),
       runtimeMinutes: data.runtime ?? data.episode_run_time?.[0] ?? null,
@@ -159,6 +160,43 @@ export class TmdbProvider implements MetadataProvider {
       collections: mapCollection(data.belongs_to_collection),
       similar: mapSimilar(data.similar?.results ?? [], type),
     };
+
+    // TMDB has no franchise/collection concept for TV, only movies.
+    if (type === "movie" && data.belongs_to_collection) {
+      details.relatedTitles = await this.getCollectionParts(
+        client,
+        data.belongs_to_collection.id,
+        data.id,
+      );
+    }
+
+    return details;
+  }
+
+  private async getCollectionParts(
+    client: AxiosInstance,
+    collectionId: number,
+    currentMovieId: number,
+  ): Promise<RelatedMedia[] | undefined> {
+    const { data } = await client.get<TmdbCollectionResponse>(`/collection/${collectionId}`);
+    const parts = (data.parts ?? [])
+      // A movie shouldn't list itself as part of its own saga.
+      .filter((part) => part.id !== currentMovieId)
+      .map((part) => ({
+        provider: "tmdb" as const,
+        providerId: String(part.id),
+        type: "movie" as const,
+        title: part.title,
+        posterUrl: imageUrl(part.poster_path, POSTER_SIZE),
+        year: yearFrom(part.release_date),
+        relation: "franchise" as const,
+      }))
+      .sort((a, b) => {
+        if (a.year == null) return 1;
+        if (b.year == null) return -1;
+        return a.year - b.year;
+      });
+    return parts.length ? parts : undefined;
   }
 
   async getSeasonEpisodes(providerId: string, seasonNumber: number): Promise<EpisodeInfo[]> {
@@ -173,6 +211,16 @@ export class TmdbProvider implements MetadataProvider {
       thumbnailUrl: imageUrl(episode.still_path ?? null, STILL_SIZE),
     }));
   }
+}
+
+interface TmdbCollectionResponse {
+  id: number;
+  parts?: {
+    id: number;
+    title: string;
+    release_date?: string;
+    poster_path: string | null;
+  }[];
 }
 
 interface TmdbSeasonResponse {

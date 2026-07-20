@@ -56,7 +56,13 @@ export interface MediaCollection {
   posterUrl: string | null;
 }
 
-export type MediaRelationType = "sequel" | "prequel" | "side_story" | "alternative" | "summary";
+export type MediaRelationType =
+  | "sequel"
+  | "prequel"
+  | "side_story"
+  | "alternative"
+  | "summary"
+  | "franchise";
 
 export interface RelatedMedia {
   provider: MediaProviderId;
@@ -96,7 +102,10 @@ export interface MediaDetails extends MediaSearchResult {
    * instead of fetching it on demand like TMDB series do.
    */
   episodes?: EpisodeInfo[];
-  /** Sequels/prequels/side stories from the same franchise, AniList-only. */
+  /**
+   * Sequels/prequels/side stories (AniList anime) or other movies in the
+   * same TMDB collection (movies). Unset for TV series.
+   */
   relatedTitles?: RelatedMedia[];
 }
 

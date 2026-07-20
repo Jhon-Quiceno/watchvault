@@ -15,12 +15,13 @@ const RELATION_LABELS: Record<RelatedMedia["relation"], string> = {
   side_story: "Historia paralela",
   alternative: "Versión alternativa",
   summary: "Resumen",
+  franchise: "Misma saga",
 };
 
 /**
- * Franchise continuations (sequels/prequels/side stories) for anime, sourced
- * from AniList's relations graph. TMDB never populates this, so the section
- * naturally disappears for movies/series.
+ * Franchise continuations: sequels/prequels/side stories for anime (AniList's
+ * relations graph) or same-collection movies for TMDB. Absent for TV series,
+ * so the section naturally disappears there.
  */
 export function RelatedTitles({ items }: { items: RelatedMedia[] }) {
   const { data: library = [] } = useLibrary();
