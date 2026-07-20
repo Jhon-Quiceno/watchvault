@@ -2,6 +2,7 @@ import axios, { type AxiosInstance } from "axios";
 
 import type {
   CastMember,
+  EpisodeInfo,
   MediaCollection,
   MediaDetails,
   MediaSearchResult,
@@ -158,6 +159,27 @@ export class TmdbProvider implements MetadataProvider {
       similar: mapSimilar(data.similar?.results ?? [], type),
     };
   }
+
+  async getSeasonEpisodes(providerId: string, seasonNumber: number): Promise<EpisodeInfo[]> {
+    const client = this.client();
+    const { data } = await client.get<TmdbSeasonResponse>(
+      `/tv/${providerId}/season/${seasonNumber}`,
+    );
+    return (data.episodes ?? []).map((episode) => ({
+      episodeNumber: episode.episode_number,
+      name: episode.name,
+      airDate: episode.air_date ?? null,
+    }));
+  }
+}
+
+interface TmdbSeasonResponse {
+  season_number: number;
+  episodes: {
+    episode_number: number;
+    name: string;
+    air_date: string | null;
+  }[];
 }
 
 interface TmdbDetailsResponse extends TmdbSearchItem {

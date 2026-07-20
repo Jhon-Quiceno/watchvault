@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Heart, Play, Trash2, X } from "lucide-react";
 
-import type { LibraryEntry } from "@/types/media";
+import type { EpisodeInfo, LibraryEntry } from "@/types/media";
 import { cn } from "@/lib/utils";
 import {
   MEDIA_TYPE_LABELS,
@@ -16,11 +16,18 @@ import {
 } from "@/lib/format";
 import { entryProgressSchema, watchStatusSchema } from "@/lib/schemas/library";
 import { useRemoveEntry, useUpdateEntry } from "@/features/library/hooks/use-library";
+import { useSeasonEpisodes } from "@/features/library/hooks/use-season-episodes";
+import {
+  isSeasonComplete,
+  toggleEpisodeKey,
+  toggleSeasonCompletion,
+} from "@/features/library/lib/episode-progress";
 import { PosterImage } from "@/components/shared/poster-image";
 import { SimpleSelect, type SelectOption } from "@/components/shared/simple-select";
 import { WatchProviders } from "@/components/shared/watch-providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -28,6 +35,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -42,21 +50,21 @@ const entryFormSchema = z.object({
   personalRating: z.number().min(0).max(10).nullable(),
   favorite: z.boolean(),
   notes: z.string().max(5000),
-  tags: z.array(z.string()),
-  startedAt: z.string().nullable(),
-  finishedAt: z.string().nullable(),
   progress: entryProgressSchema,
 });
 type EntryFormValues = z.infer<typeof entryFormSchema>;
 
-function toDateInput(iso: string | null): string {
-  return iso ? iso.slice(0, 10) : "";
-}
-
-function fromDateInput(value: string): string | null {
-  if (!value) return null;
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+/**
+ * Entries created before the episode checklist existed only have a plain
+ * `watchedEpisodes` count. To avoid the visible count jumping backward the
+ * first time someone uses the checklist, that old count is kept as a local
+ * baseline and added on top of newly checked episodes.
+ */
+function computeLegacyBaseline(entry: LibraryEntry): number {
+  const keys = entry.progress.watchedEpisodeKeys ?? [];
+  return keys.length === 0 && entry.progress.watchedEpisodes > 0
+    ? entry.progress.watchedEpisodes
+    : 0;
 }
 
 export function EntryDetailDialog({
@@ -220,19 +228,27 @@ function EntryEditForm({
   onSave: (patch: EntryFormValues) => void;
   onDelete: () => void;
 }) {
-  const { control, register, handleSubmit, reset } = useForm<EntryFormValues>({
-    resolver: zodResolver(entryFormSchema),
-    defaultValues: {
-      status: entry.status,
-      personalRating: entry.personalRating,
-      favorite: entry.favorite,
-      notes: entry.notes,
-      tags: entry.tags,
-      startedAt: entry.startedAt,
-      finishedAt: entry.finishedAt,
-      progress: entry.progress,
-    },
-  });
+  const [legacyBaseline, setLegacyBaseline] = useState(() => computeLegacyBaseline(entry));
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(
+    entry.media.seasonCount ? 1 : null,
+  );
+
+  const { control, register, handleSubmit, reset, getValues, setValue } =
+    useForm<EntryFormValues>({
+      resolver: zodResolver(entryFormSchema),
+      defaultValues: {
+        status: entry.status,
+        personalRating: entry.personalRating,
+        favorite: entry.favorite,
+        notes: entry.notes,
+        progress: {
+          watchedEpisodes: entry.progress.watchedEpisodes,
+          watchedSeasons: entry.progress.watchedSeasons,
+          watchedEpisodeKeys: entry.progress.watchedEpisodeKeys ?? [],
+          completedSeasons: entry.progress.completedSeasons ?? [],
+        },
+      },
+    });
 
   useEffect(() => {
     reset({
@@ -240,14 +256,54 @@ function EntryEditForm({
       personalRating: entry.personalRating,
       favorite: entry.favorite,
       notes: entry.notes,
-      tags: entry.tags,
-      startedAt: entry.startedAt,
-      finishedAt: entry.finishedAt,
-      progress: entry.progress,
+      progress: {
+        watchedEpisodes: entry.progress.watchedEpisodes,
+        watchedSeasons: entry.progress.watchedSeasons,
+        watchedEpisodeKeys: entry.progress.watchedEpisodeKeys ?? [],
+        completedSeasons: entry.progress.completedSeasons ?? [],
+      },
     });
+    setLegacyBaseline(computeLegacyBaseline(entry));
+    setSelectedSeason(entry.media.seasonCount ? 1 : null);
   }, [entry, reset]);
 
+  const watchedEpisodeKeys = useWatch({ control, name: "progress.watchedEpisodeKeys" }) ?? [];
+  const completedSeasons = useWatch({ control, name: "progress.completedSeasons" }) ?? [];
+
+  function toggleEpisode(seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) {
+    const nextKeys = toggleEpisodeKey(
+      getValues("progress.watchedEpisodeKeys"),
+      seasonNumber,
+      episodeNumber,
+    );
+    const complete = isSeasonComplete(nextKeys, seasonNumber, seasonEpisodeCount);
+    const nextCompleted = toggleSeasonCompletion(
+      getValues("progress.completedSeasons"),
+      seasonNumber,
+      complete,
+    );
+
+    setValue("progress.watchedEpisodeKeys", nextKeys, { shouldDirty: true });
+    setValue("progress.completedSeasons", nextCompleted, { shouldDirty: true });
+    setValue("progress.watchedEpisodes", legacyBaseline + nextKeys.length, { shouldDirty: true });
+    setValue("progress.watchedSeasons", nextCompleted.length, { shouldDirty: true });
+  }
+
   const trackProgress = entry.media.type !== "movie";
+  const seasonOptions: SelectOption[] = entry.media.seasonCount
+    ? Array.from({ length: entry.media.seasonCount }, (_, index) => ({
+        value: String(index + 1),
+        label: `Temporada ${index + 1}`,
+      }))
+    : [];
+
+  const seasonEpisodesQuery = useSeasonEpisodes(
+    entry.media.provider,
+    "series",
+    entry.media.providerId,
+    selectedSeason ?? 1,
+    entry.media.type === "series" && selectedSeason != null,
+  );
 
   return (
     <form
@@ -316,60 +372,44 @@ function EntryEditForm({
       </Field>
 
       {trackProgress && (
-        <div className="grid grid-cols-2 gap-3">
-          <Field label="Episodios vistos">
-            <Input
-              type="number"
-              min={0}
-              {...register("progress.watchedEpisodes", { valueAsNumber: true })}
+        <div className="flex flex-col gap-3 rounded-xl border border-border/60 p-3">
+          <div className="flex items-center justify-between text-sm">
+            <span>
+              Episodios vistos: <strong>{legacyBaseline + watchedEpisodeKeys.length}</strong>
+            </span>
+            <span>
+              Temporadas vistas: <strong>{completedSeasons.length}</strong>
+            </span>
+          </div>
+
+          {entry.media.type === "series" && seasonOptions.length > 0 && selectedSeason != null && (
+            <>
+              <SimpleSelect
+                value={String(selectedSeason)}
+                onValueChange={(value) => setSelectedSeason(Number(value))}
+                options={seasonOptions}
+                className="w-full"
+              />
+              <EpisodeChecklist
+                episodes={seasonEpisodesQuery.data ?? []}
+                seasonNumber={selectedSeason}
+                watchedKeys={watchedEpisodeKeys}
+                onToggle={toggleEpisode}
+                loading={seasonEpisodesQuery.isLoading}
+              />
+            </>
+          )}
+
+          {entry.media.type === "anime" && (
+            <EpisodeChecklist
+              episodes={entry.media.episodes ?? []}
+              seasonNumber={1}
+              watchedKeys={watchedEpisodeKeys}
+              onToggle={toggleEpisode}
             />
-          </Field>
-          <Field label="Temporadas vistas">
-            <Input
-              type="number"
-              min={0}
-              {...register("progress.watchedSeasons", { valueAsNumber: true })}
-            />
-          </Field>
+          )}
         </div>
       )}
-
-      <div className="grid grid-cols-2 gap-3">
-        <Field label="Iniciado">
-          <Controller
-            control={control}
-            name="startedAt"
-            render={({ field }) => (
-              <Input
-                type="date"
-                value={toDateInput(field.value)}
-                onChange={(event) => field.onChange(fromDateInput(event.target.value))}
-              />
-            )}
-          />
-        </Field>
-        <Field label="Finalizado">
-          <Controller
-            control={control}
-            name="finishedAt"
-            render={({ field }) => (
-              <Input
-                type="date"
-                value={toDateInput(field.value)}
-                onChange={(event) => field.onChange(fromDateInput(event.target.value))}
-              />
-            )}
-          />
-        </Field>
-      </div>
-
-      <Field label="Etiquetas">
-        <Controller
-          control={control}
-          name="tags"
-          render={({ field }) => <TagInput value={field.value} onChange={field.onChange} />}
-        />
-      </Field>
 
       <Field label="Notas">
         <Textarea rows={3} placeholder="Notas personales…" {...register("notes")} />
@@ -396,52 +436,53 @@ function EntryEditForm({
   );
 }
 
+function EpisodeChecklist({
+  episodes,
+  seasonNumber,
+  watchedKeys,
+  onToggle,
+  loading,
+}: {
+  episodes: EpisodeInfo[];
+  seasonNumber: number;
+  watchedKeys: string[];
+  onToggle: (seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) => void;
+  loading?: boolean;
+}) {
+  if (loading) {
+    return <p className="text-muted-foreground px-1 text-xs">Cargando episodios…</p>;
+  }
+  if (episodes.length === 0) {
+    return <p className="text-muted-foreground px-1 text-xs">No hay episodios disponibles.</p>;
+  }
+  return (
+    <ScrollArea className="border-border/60 h-48 rounded-lg border">
+      <div className="divide-border/60 flex flex-col divide-y">
+        {episodes.map((episode) => {
+          const key = `${seasonNumber}:${episode.episodeNumber}`;
+          const checked = watchedKeys.includes(key);
+          return (
+            <label key={key} className="flex items-center gap-2 px-3 py-2 text-sm">
+              <Checkbox
+                checked={checked}
+                onCheckedChange={() => onToggle(seasonNumber, episode.episodeNumber, episodes.length)}
+              />
+              <span className="flex-1 truncate">
+                Episodio {episode.episodeNumber}: {episode.name}
+              </span>
+            </label>
+          );
+        })}
+      </div>
+    </ScrollArea>
+  );
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="flex flex-col gap-1.5 text-sm">
       <span className="text-muted-foreground text-xs font-medium">{label}</span>
       {children}
     </label>
-  );
-}
-
-function TagInput({ value, onChange }: { value: string[]; onChange: (tags: string[]) => void }) {
-  const [draft, setDraft] = useState("");
-
-  function addTag() {
-    const tag = draft.trim();
-    if (tag && !value.includes(tag)) onChange([...value, tag]);
-    setDraft("");
-  }
-
-  return (
-    <div className="border-input flex flex-wrap gap-1.5 rounded-lg border p-2">
-      {value.map((tag) => (
-        <Badge key={tag} variant="secondary" className="gap-1">
-          {tag}
-          <button
-            type="button"
-            aria-label={`Quitar ${tag}`}
-            onClick={() => onChange(value.filter((t) => t !== tag))}
-            className="hover:text-foreground"
-          >
-            <X className="size-3" />
-          </button>
-        </Badge>
-      ))}
-      <input
-        value={draft}
-        onChange={(event) => setDraft(event.target.value)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            addTag();
-          }
-        }}
-        onBlur={addTag}
-        placeholder="Agregar etiqueta…"
-        className="min-w-24 flex-1 bg-transparent text-sm outline-none"
-      />
-    </div>
   );
 }

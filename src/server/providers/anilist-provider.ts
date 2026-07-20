@@ -2,6 +2,7 @@ import axios from "axios";
 
 import type {
   CastMember,
+  EpisodeInfo,
   MediaDetails,
   MediaSearchResult,
   MediaType,
@@ -37,6 +38,7 @@ interface AniListMedia {
   recommendations: {
     nodes: { mediaRecommendation: Pick<AniListMedia, "id" | "title" | "coverImage"> | null }[];
   } | null;
+  streamingEpisodes: { title: string | null }[] | null;
 }
 
 const MEDIA_FIELDS = `
@@ -62,6 +64,7 @@ const DETAIL_FIELDS = `
   recommendations(sort: RATING_DESC, perPage: 12) {
     nodes { mediaRecommendation { id title { romaji english } coverImage { large } } }
   }
+  streamingEpisodes { title }
 `;
 
 const SEARCH_QUERY = `
@@ -118,6 +121,19 @@ function mapCast(characters: AniListMedia["characters"]): CastMember[] {
     character: "",
     profileUrl: node.image?.medium ?? null,
   }));
+}
+
+function mapEpisodes(media: AniListMedia): EpisodeInfo[] {
+  const streaming = media.streamingEpisodes ?? [];
+  const total = media.episodes ?? streaming.length;
+  return Array.from({ length: total }, (_, index) => {
+    const episodeNumber = index + 1;
+    return {
+      episodeNumber,
+      name: streaming[index]?.title ?? `Episodio ${episodeNumber}`,
+      airDate: null,
+    };
+  });
 }
 
 function mapSimilar(recommendations: AniListMedia["recommendations"]): SimilarMediaSummary[] {
@@ -189,6 +205,7 @@ export class AniListProvider implements MetadataProvider {
       watchProviders: undefined,
       collections: undefined,
       similar: mapSimilar(media.recommendations),
+      episodes: mapEpisodes(media),
     };
   }
 }

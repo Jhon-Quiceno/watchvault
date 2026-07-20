@@ -77,11 +77,28 @@ export interface MediaDetails extends MediaSearchResult {
   watchProviders?: WatchProvider[];
   collections?: MediaCollection[];
   similar?: SimilarMediaSummary[];
+  /**
+   * Flat per-episode list, populated only by the AniList provider. AniList
+   * has no per-entry "seasons" sub-resource (each season is a separate
+   * media id there), so anime snapshots its full episode list at add-time
+   * instead of fetching it on demand like TMDB series do.
+   */
+  episodes?: EpisodeInfo[];
+}
+
+export interface EpisodeInfo {
+  episodeNumber: number;
+  name: string;
+  airDate: string | null;
 }
 
 export interface LibraryEntryProgress {
   watchedEpisodes: number;
   watchedSeasons: number;
+  /** `${seasonNumber}:${episodeNumber}`, e.g. "1:5". Anime always uses season "1". */
+  watchedEpisodeKeys: string[];
+  /** Season numbers confirmed fully watched; drives `watchedSeasons`. */
+  completedSeasons: number[];
 }
 
 /**

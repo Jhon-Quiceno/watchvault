@@ -26,6 +26,8 @@ export type AddToLibraryInput = z.infer<typeof addToLibrarySchema>;
 export const entryProgressSchema = z.object({
   watchedEpisodes: z.number().int().min(0),
   watchedSeasons: z.number().int().min(0),
+  watchedEpisodeKeys: z.array(z.string()),
+  completedSeasons: z.array(z.number().int()),
 });
 
 export const updateEntrySchema = z

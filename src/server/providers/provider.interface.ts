@@ -1,4 +1,10 @@
-import type { MediaDetails, MediaProviderId, MediaSearchResult, MediaType } from "@/types/media";
+import type {
+  EpisodeInfo,
+  MediaDetails,
+  MediaProviderId,
+  MediaSearchResult,
+  MediaType,
+} from "@/types/media";
 
 export interface MetadataSearchOptions {
   type?: MediaType;
@@ -17,4 +23,7 @@ export interface MetadataProvider {
   search(query: string, opts?: MetadataSearchOptions): Promise<MediaSearchResult[]>;
 
   getDetails(providerId: string, type: MediaType): Promise<MediaDetails>;
+
+  /** On-demand per-season episode list. Only TMDB (series) implements this. */
+  getSeasonEpisodes?(providerId: string, seasonNumber: number): Promise<EpisodeInfo[]>;
 }

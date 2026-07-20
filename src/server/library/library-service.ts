@@ -70,7 +70,7 @@ export async function addEntry(input: AddToLibraryInput): Promise<LibraryEntry> 
     startedAt: null,
     finishedAt: input.status === "completed" ? timestamp : null,
     rewatchCount: 0,
-    progress: { watchedEpisodes: 0, watchedSeasons: 0 },
+    progress: { watchedEpisodes: 0, watchedSeasons: 0, watchedEpisodeKeys: [], completedSeasons: [] },
     addedAt: timestamp,
     updatedAt: timestamp,
   };

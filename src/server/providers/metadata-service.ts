@@ -1,4 +1,10 @@
-import type { MediaDetails, MediaProviderId, MediaSearchResult, MediaType } from "@/types/media";
+import type {
+  EpisodeInfo,
+  MediaDetails,
+  MediaProviderId,
+  MediaSearchResult,
+  MediaType,
+} from "@/types/media";
 import {
   getAllProviders,
   getProvider,
@@ -38,4 +44,19 @@ export async function getMediaDetails(
     throw new Error(`Unknown provider: ${provider}`);
   }
   return adapter.getDetails(providerId, type);
+}
+
+export async function getSeasonEpisodes(
+  provider: MediaProviderId,
+  providerId: string,
+  seasonNumber: number,
+): Promise<EpisodeInfo[]> {
+  const adapter = getProvider(provider);
+  if (!adapter) {
+    throw new Error(`Unknown provider: ${provider}`);
+  }
+  if (!adapter.getSeasonEpisodes) {
+    throw new Error(`Provider ${provider} does not support per-season episodes`);
+  }
+  return adapter.getSeasonEpisodes(providerId, seasonNumber);
 }
