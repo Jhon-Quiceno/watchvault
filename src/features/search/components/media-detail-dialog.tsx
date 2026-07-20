@@ -8,6 +8,7 @@ import { MEDIA_TYPE_LABELS, WATCH_STATUSES, WATCH_STATUS_LABELS, formatRuntime }
 import { useMediaDetails } from "@/features/search/hooks/use-media-details";
 import { useAddToLibrary } from "@/features/library/hooks/use-library";
 import { PosterImage } from "@/components/shared/poster-image";
+import { RelatedTitles } from "@/components/shared/related-titles";
 import { WatchProviders } from "@/components/shared/watch-providers";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -162,6 +163,7 @@ export function MediaDetailDialog({
                   </p>
                 </div>
               )}
+              <RelatedTitles items={media.relatedTitles ?? []} />
               <WatchProviders providers={media.watchProviders} />
               {media.trailerUrl && (
                 <a

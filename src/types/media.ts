@@ -56,6 +56,18 @@ export interface MediaCollection {
   posterUrl: string | null;
 }
 
+export type MediaRelationType = "sequel" | "prequel" | "side_story" | "alternative" | "summary";
+
+export interface RelatedMedia {
+  provider: MediaProviderId;
+  providerId: string;
+  type: MediaType;
+  title: string;
+  posterUrl: string | null;
+  year: number | null;
+  relation: MediaRelationType;
+}
+
 export interface SimilarMediaSummary {
   id: string;
   title: string;
@@ -84,6 +96,8 @@ export interface MediaDetails extends MediaSearchResult {
    * instead of fetching it on demand like TMDB series do.
    */
   episodes?: EpisodeInfo[];
+  /** Sequels/prequels/side stories from the same franchise, AniList-only. */
+  relatedTitles?: RelatedMedia[];
 }
 
 export interface EpisodeInfo {

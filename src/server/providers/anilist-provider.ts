@@ -4,9 +4,11 @@ import type {
   CastMember,
   EpisodeInfo,
   MediaDetails,
+  MediaRelationType,
   MediaSearchResult,
   MediaType,
   NextEpisode,
+  RelatedMedia,
   SimilarMediaSummary,
 } from "@/types/media";
 import { getEnv } from "@/config/env";
@@ -39,6 +41,19 @@ interface AniListMedia {
     nodes: { mediaRecommendation: Pick<AniListMedia, "id" | "title" | "coverImage"> | null }[];
   } | null;
   streamingEpisodes: { title: string | null; thumbnail: string | null }[] | null;
+  relations: {
+    edges: {
+      relationType: string;
+      node: {
+        id: number;
+        type: string;
+        format: string | null;
+        title: { romaji: string | null; english: string | null; native: string | null };
+        coverImage: { extraLarge: string | null; large: string | null } | null;
+        startDate: { year: number | null } | null;
+      };
+    }[];
+  } | null;
 }
 
 const MEDIA_FIELDS = `
@@ -65,6 +80,12 @@ const DETAIL_FIELDS = `
     nodes { mediaRecommendation { id title { romaji english } coverImage { large } } }
   }
   streamingEpisodes { title thumbnail }
+  relations {
+    edges {
+      relationType(version: 2)
+      node { id type format title { romaji english native } coverImage { extraLarge large } startDate { year } }
+    }
+  }
 `;
 
 const SEARCH_QUERY = `
@@ -170,6 +191,38 @@ function mapEpisodes(media: AniListMedia): EpisodeInfo[] {
   });
 }
 
+/**
+ * AniList's relationType covers manga sources and character crossovers too;
+ * only these map to "the story continuing" in this app's domain, so
+ * anything else (SPIN_OFF, OTHER, CHARACTER, SOURCE, ...) is dropped.
+ */
+const RELATION_TYPE_MAP: Record<string, MediaRelationType> = {
+  SEQUEL: "sequel",
+  PREQUEL: "prequel",
+  SIDE_STORY: "side_story",
+  ALTERNATIVE: "alternative",
+  SUMMARY: "summary",
+};
+
+function mapRelatedTitles(relations: AniListMedia["relations"]): RelatedMedia[] {
+  const result: RelatedMedia[] = [];
+  for (const edge of relations?.edges ?? []) {
+    if (edge.node.type !== "ANIME") continue;
+    const relation = RELATION_TYPE_MAP[edge.relationType];
+    if (!relation) continue;
+    result.push({
+      provider: "anilist",
+      providerId: String(edge.node.id),
+      type: "anime",
+      title: pickTitle(edge.node.title),
+      posterUrl: edge.node.coverImage?.extraLarge ?? edge.node.coverImage?.large ?? null,
+      year: edge.node.startDate?.year ?? null,
+      relation,
+    });
+  }
+  return result;
+}
+
 function mapSimilar(recommendations: AniListMedia["recommendations"]): SimilarMediaSummary[] {
   return (recommendations?.nodes ?? [])
     .map((node) => node.mediaRecommendation)
@@ -240,6 +293,7 @@ export class AniListProvider implements MetadataProvider {
       collections: undefined,
       similar: mapSimilar(media.recommendations),
       episodes: mapEpisodes(media),
+      relatedTitles: mapRelatedTitles(media.relations),
     };
   }
 }

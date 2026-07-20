@@ -1,6 +1,22 @@
+import type { EpisodeInfo } from "@/types/media";
+
 /** Composite key identifying one episode within a library entry's progress. */
 export function episodeKey(seasonNumber: number, episodeNumber: number): string {
   return `${seasonNumber}:${episodeNumber}`;
+}
+
+/**
+ * Splits a season/anime's episode list into fixed-size blocks (default 50)
+ * for collapsible rendering. Long-running anime like One Piece have 1000+
+ * episodes, so rendering everything flat is heavy - chunking lets the UI
+ * lazily render only the block the user opens.
+ */
+export function chunkEpisodes(episodes: EpisodeInfo[], chunkSize = 50): EpisodeInfo[][] {
+  const chunks: EpisodeInfo[][] = [];
+  for (let index = 0; index < episodes.length; index += chunkSize) {
+    chunks.push(episodes.slice(index, index + chunkSize));
+  }
+  return chunks;
 }
 
 export function toggleEpisodeKey(

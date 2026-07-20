@@ -18,6 +18,7 @@ import { entryProgressSchema, watchStatusSchema } from "@/lib/schemas/library";
 import { useRemoveEntry, useUpdateEntry } from "@/features/library/hooks/use-library";
 import { useSeasonEpisodes } from "@/features/library/hooks/use-season-episodes";
 import {
+  chunkEpisodes,
   checkThroughEpisode,
   episodeKey,
   isSeasonComplete,
@@ -25,6 +26,7 @@ import {
   toggleSeasonCompletion,
 } from "@/features/library/lib/episode-progress";
 import { PosterImage } from "@/components/shared/poster-image";
+import { RelatedTitles } from "@/components/shared/related-titles";
 import { SimpleSelect, type SelectOption } from "@/components/shared/simple-select";
 import { WatchProviders } from "@/components/shared/watch-providers";
 import { Badge } from "@/components/ui/badge";
@@ -191,6 +193,7 @@ function EntryInfo({ entry }: { entry: LibraryEntry }) {
           <p className="text-sm">{media.cast.slice(0, 6).map((c) => c.name).join(", ")}</p>
         </div>
       )}
+      <RelatedTitles items={media.relatedTitles ?? []} />
       <WatchProviders providers={media.watchProviders} />
       {media.trailerUrl && (
         <a
@@ -504,6 +507,8 @@ function AnimeEpisodesSection({
   );
 }
 
+const EPISODE_CHUNK_SIZE = 50;
+
 function EpisodeChecklist({
   episodes,
   seasonNumber,
@@ -523,6 +528,96 @@ function EpisodeChecklist({
   if (episodes.length === 0) {
     return <p className="text-muted-foreground px-1 text-xs">No hay episodios disponibles.</p>;
   }
+
+  // Most seasons/anime have 50 or fewer episodes: render flat, no extra
+  // collapse friction. Only chunk into collapsible blocks past that.
+  if (episodes.length <= EPISODE_CHUNK_SIZE) {
+    return (
+      <EpisodeListPanel
+        episodes={episodes}
+        totalCount={episodes.length}
+        seasonNumber={seasonNumber}
+        watchedKeys={watchedKeys}
+        onToggle={onToggle}
+      />
+    );
+  }
+
+  const chunks = chunkEpisodes(episodes, EPISODE_CHUNK_SIZE);
+  return (
+    <div className="flex flex-col gap-2">
+      {chunks.map((chunk) => (
+        <EpisodeBlock
+          key={chunk[0]?.episodeNumber}
+          chunk={chunk}
+          totalCount={episodes.length}
+          seasonNumber={seasonNumber}
+          watchedKeys={watchedKeys}
+          onToggle={onToggle}
+        />
+      ))}
+    </div>
+  );
+}
+
+function EpisodeBlock({
+  chunk,
+  totalCount,
+  seasonNumber,
+  watchedKeys,
+  onToggle,
+}: {
+  chunk: EpisodeInfo[];
+  totalCount: number;
+  seasonNumber: number;
+  watchedKeys: string[];
+  onToggle: (seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const start = chunk[0]?.episodeNumber;
+  const end = chunk[chunk.length - 1]?.episodeNumber;
+  const watched = chunk.filter((episode) =>
+    watchedKeys.includes(episodeKey(seasonNumber, episode.episodeNumber)),
+  ).length;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <button
+        type="button"
+        onClick={() => setExpanded((value) => !value)}
+        className="border-border/60 hover:bg-muted/40 flex items-center justify-between rounded-lg border px-3 py-2 text-sm font-medium transition-colors"
+      >
+        <span>
+          Episodios {start}-{end} ({watched}/{chunk.length})
+        </span>
+        <ChevronDown className={cn("size-4 transition-transform", expanded && "rotate-180")} />
+      </button>
+      {expanded && (
+        <EpisodeListPanel
+          episodes={chunk}
+          totalCount={totalCount}
+          seasonNumber={seasonNumber}
+          watchedKeys={watchedKeys}
+          onToggle={onToggle}
+        />
+      )}
+    </div>
+  );
+}
+
+function EpisodeListPanel({
+  episodes,
+  totalCount,
+  seasonNumber,
+  watchedKeys,
+  onToggle,
+}: {
+  episodes: EpisodeInfo[];
+  totalCount: number;
+  seasonNumber: number;
+  watchedKeys: string[];
+  onToggle: (seasonNumber: number, episodeNumber: number, seasonEpisodeCount: number) => void;
+}) {
   return (
     <ScrollArea className="border-border/60 h-64 rounded-lg border">
       <div className="divide-border/60 flex flex-col divide-y">
@@ -555,7 +650,7 @@ function EpisodeChecklist({
               </div>
               <Checkbox
                 checked={checked}
-                onCheckedChange={() => onToggle(seasonNumber, episode.episodeNumber, episodes.length)}
+                onCheckedChange={() => onToggle(seasonNumber, episode.episodeNumber, totalCount)}
                 className="shrink-0"
               />
             </label>
