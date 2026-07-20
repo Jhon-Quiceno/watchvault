@@ -40,13 +40,18 @@ export function LibraryBulkActionsBar({
 
   async function applyStatus(status: string) {
     setApplyingStatus(true);
-    const results = await Promise.allSettled(
-      selectedIds.map((id) =>
-        updateEntry.mutateAsync({ id, patch: { status: status as WatchStatus }, silent: true }),
-      ),
-    );
+    // One at a time: each update is a full read-modify-write of the same
+    // shared Blob file, and firing them all in parallel can exceed the
+    // write's own conflict-retry budget under real contention.
+    let failed = 0;
+    for (const id of selectedIds) {
+      try {
+        await updateEntry.mutateAsync({ id, patch: { status: status as WatchStatus }, silent: true });
+      } catch {
+        failed += 1;
+      }
+    }
     setApplyingStatus(false);
-    const failed = results.filter((result) => result.status === "rejected").length;
     if (failed === 0) {
       toast.success(`Se actualizó el estado de ${count} ${tituloWord(count)}`);
     } else if (failed === count) {
@@ -59,12 +64,16 @@ export function LibraryBulkActionsBar({
 
   async function confirmDelete() {
     setDeleting(true);
-    const results = await Promise.allSettled(
-      selectedIds.map((id) => removeEntry.mutateAsync({ id, silent: true })),
-    );
+    let failed = 0;
+    for (const id of selectedIds) {
+      try {
+        await removeEntry.mutateAsync({ id, silent: true });
+      } catch {
+        failed += 1;
+      }
+    }
     setDeleting(false);
     setConfirmOpen(false);
-    const failed = results.filter((result) => result.status === "rejected").length;
     if (failed === 0) {
       toast.success(`Se quitaron ${count} ${tituloWord(count)} de tu vault`);
     } else if (failed === count) {

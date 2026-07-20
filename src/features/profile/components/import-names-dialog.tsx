@@ -139,14 +139,20 @@ export function ImportNamesDialog({
       items.push(decoded);
     });
 
-    const results = await Promise.allSettled(
-      items.map((item) =>
-        addToLibrary.mutateAsync({ ...item, status: batchStatus, silent: true }),
-      ),
-    );
-
-    const added = results.filter((result) => result.status === "fulfilled").length;
-    const failed = results.filter((result) => result.status === "rejected").length;
+    // Adds are sent one at a time, not in parallel: every add is a full
+    // read-modify-write of the same shared Blob file, and firing a whole
+    // batch at once overwhelms the write's own conflict-retry budget under
+    // real contention (seen in production with ~30 simultaneous adds).
+    let added = 0;
+    let failed = 0;
+    for (const item of items) {
+      try {
+        await addToLibrary.mutateAsync({ ...item, status: batchStatus, silent: true });
+        added += 1;
+      } catch {
+        failed += 1;
+      }
+    }
 
     await queryClient.invalidateQueries({ queryKey: queryKeys.library.all });
 
